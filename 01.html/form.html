@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form 태그와 관련된 태그 사용해보기</title>
+</head>
+<body>
+    <!-- 서버에 제출하기 위한 태그 -->
+    <form>
+        text <input type="text" />
+
+        <br />
+        <!-- input 짝꿍 label (크로스 브라우징 고려) -->
+        <!-- (1) 명시적 방법 -->
+        <label for="emailId">email</label>
+        <input type="email" id="emailId" placeholder="example@naver.com"/>
+
+        <br />
+        <!-- (2) 암시적 방법 -->
+        <label>
+            password <input type="password" placeholder="비밀번호를 작성해주세요">
+        </label>
+
+        <br />
+        <input type="color" />
+        <input type="range" name="" id="" />
+        <input type="date" />
+        <input type="file" />
+        <input type="number" />
+
+        <br />
+        <input type="button" value="버튼">
+        <input type="submit" value="버튼">
+        <!-- button의 type: submit(default), button -->
+        <button type="button">버튼</button>
+
+        <br />
+        <br />
+        <h5>다음 중 input type이 아닌 것은?(모두 고르시오)</h5>
+        <!-- input 타입은 name 속성 필수 :: 동일한 name사용해서 한가지 문제로 묶울 수 있음-->
+        <input type="checkbox" name="input"> text
+        <input type="checkbox" name="input"> click
+        <input type="checkbox" name="input"> img
+        <input type="checkbox" name="input"> date
+        <input type="checkbox" name="input"> bread
+        
+        <h5>다음 중 img 태그의 속성인 것은?</h5>
+        <label for="">
+            <input type="radio" name="img" /> 
+            title
+        </label>
+        <label for="">
+            <input type="radio" name="img" disabled /> 
+            value
+        </label>
+        <label for="">
+            <input type="radio" name="img" checked/> 
+            mouse
+        </label>
+        
+        <input type="radio" name="img" id="alt" /> 
+        <label for="alt">alt</label>
+
+        <input type="radio" name="img" id="type" />
+        <label for="type">type</label> 
+
+        <br />
+
+        <!-- 
+        id, name 이름을 지을 때!!
+        1. 첫글자는 숫자가 오면 안됨
+        2. 되도록이면 전부 영어로 이름 짓기
+        3. _(언더바)는 가능하지만 -(하이픈)은 불가능! -->
+
+        <!-- select :: option과 짝꿍-->
+         <select name="flower">
+            <optgroup label="빨간꽃">
+                <option value="장미">장미</option>
+                <option value="동백꽃">동백꽃</option>
+            </optgroup>
+            <optgroup label="흰꽃">
+                <option value="목련">목련</option>
+                <option value="매화">매화</option>
+            </optgroup>
+            
+         </select>
+
+         <br />
+         <!-- 가로 30글자 10줄 -->
+         <textarea cols="30" rows="10" placeholder="하고싶은 말"></textarea>
+    </form>
+
+</body>
+</html>
