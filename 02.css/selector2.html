@@ -48,10 +48,11 @@
         }
 
         /* 형제 선택자 (+, ~) */
+            /* 1. 인접(A + B): A요소 바로 다음에 오는 B요소만 선택*/
         #fairy + li{
             background-color: cornflowerblue;
         }
-
+            /* 2. 일반(A ~ B): A요소 뒤에 나오는 모든 B요소 선택*/
         #fairy ~ li{
             color: blue;
         }

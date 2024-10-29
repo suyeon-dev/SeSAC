@@ -25,9 +25,28 @@
         textarea {
             width: 100%;
         }
-        
+        textarea:focus{
+            background-color:#ffeeee;
+        }
       
         /* checked */
+        /* 일반(A ~ B)형제 선택자 : 인접(+)보다 유연하게 사용 가능 */
+        #red:checked ~ label[for="red"]{
+            background-color: red;
+            color: white;
+        }
+
+        #blue:checked ~ label[for="blue"]{
+            background-color: blue;
+            color: white;
+        }
+
+        #yellow:checked ~ label[for="yellow"]{
+            background-color: yellow;
+            color: black;
+        }
+
+
         /* active */
         button {
             float: right;
@@ -38,18 +57,30 @@
             border-radius: 10px;
             border: none;
         }
+        button:active{
+            background-color: lightgray;
+            color:#f96666;
+        }
     </style>
   </head>
   <body>
     <h3>건의 사항을 적어주세요!</h3>
     <form>
+    <!-- checkbox와 textarea 만들기 -->
+     <textarea placeholder="건의 사항 🎈"></textarea>
       <!-- label
         - 명시적 방식: id와 for 맞춰주기
         - 암시적 방식: label 내부에 input 쓰기 
             - checkbox 사용 시 명시적 방식으로 진행하기	
       -->
+        <input type="checkbox" name="color" id="red" />
+        <label for="red">빨강</label>
 
-      <!-- checkbox와 textarea 만들기 -->
+        <input type="checkbox" name="color" id="blue" />
+        <label for="blue">파랑</label>
+
+        <input type="checkbox" name="color" id="yellow" />
+        <label for="yellow">노랑</label>
       <button>제출</button>
     </form>
   </body>
