@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미니실습4: 배경 적용하기</title>
+    <style>
+        .container {
+            width: 800px;
+            height: 500px;
+            background-color: skyblue;
+            background-image: url('https://item.kakaocdn.net/do/d84248170c2c52303db27306a00fb861f604e7b0e6900f9ac53a43965300eb9a');
+            /* background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; */
+            margin: 20px auto;
+            position: relative;
+            /* overflow: hidden; */
+        }
+        /* 1. 라이언 이미지 크기 그대로, 수직 중앙 배치, x축만 반복 */
+        #div1 {
+            background-size: auto;
+            background-position: center;
+        }
+        /* 2. 라이언 이미지 크기 짧은 축에 맞추기 */
+        #div2 {
+            background-size: contain;
+            background-position: 100px 30px;
+        }
+        /* 3. 라이언 이미지 크기 긴 축에 맞추고, 포지션 값 조정 */
+        #div3 {
+            background-size: cover;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container" id="div1"></div>
+        <div class="container" id="div2"></div>
+        <div class="container" id="div3"></div>
+    </body>
+</html>

@@ -38,3 +38,149 @@
     padding: 10px;
     margin: 10px;
 }
+
+.parent{
+    width:300px;
+    height:250px;
+    background-color: red;
+}
+/* 최소가 지정되어 400이하로 떨어지지 않음 (이상) */
+.parent > .min{
+    min-width:400px;
+    background-color: orange;
+    height: 100px;
+}
+/* 부모를 따라감 (이하) */
+.parent > .max{
+    max-width: 400px;
+    height: 100px;
+    background-color: violet;
+}
+
+/* 단위 확인 */
+.box{
+    background-color: beige;
+    border: 1px solid black;
+}
+    
+.box-px{
+    width: 50px;
+    height: 50px;
+}
+    /* 뷰포트 크기의 50%, 디바이스 크기에 따라 제어 */
+.box-view{
+    width: 50vw;
+    height: 50vh;
+}
+    /* 부모(body; 마진값 있어서 뷰포트보다 작음) 너비의 50% */
+        /* - div는 기본적으로 높이가 없음 (컨텐츠 크기에 따라 늘어남)
+        - height 받아오지 못하고 있음 */
+.box-per{
+    width: 50%;
+    height: 50%;
+}
+
+html{
+    /* default 16px */
+    font-size: 20px;
+}
+
+/* html의 폰트사이즈 1rem*/
+.rem{
+    /* 16*2=32px */
+    font-size: 2rem;
+}
+
+/* 부모의 폰트사이즈가 1em */
+    /* - 첫번째 em의 부모(바디)의 *2 = 32px
+    - 두번째 em의 부모(첫번째 em)의 *2 = 64 */
+.em{
+    font-size: 2em;
+}
+
+.square{
+    width: 100px;
+    height: 100px;
+    border: 1px solid gray;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.border{
+    /* width, style, color 순으로 단축속성 작성 */
+    border:1px solid black;
+    border-color: blue;
+    border-style: dotted;
+    border-width: 5px;
+
+    border-left: 2px dashed yellow;
+    border-top-style: solid;
+}
+
+.rounded{
+    /* 퍼센트보다 픽셀이 모양이 더 예뻐서 선호 */
+    border-radius: 10px;
+    /* 단축속성 */
+    border-radius: 5px 10px 20px 40px;
+    border-radius: 5px 20px 50px;
+    border-radius: 5px 50px;
+}
+
+.box-sizing{
+    border: 15px solid red;
+    padding: 20px;
+    background-color: yellow;;
+}
+
+/* padding 극단적으로 늘리면 바뀌긴 함 */
+.content-box{
+    box-sizing: content-box;
+}
+/* 우리가 설정한 크기대로 (권장) */
+.border-box{
+box-sizing: border-box;
+}
+
+/* 모습 안 보이게 하기 */
+.d-none {
+    /* 1. 자리 없어짐, 속성 없어짐 */
+    /* display: none; */
+    background-color: red;
+    }
+.invisible {
+    /* 2. 자리 그대로, 속성 없어짐 */
+/* visibility: hidden; */
+background-color: orangered;
+}
+.opacity-0 {
+    /* 3. 자리 그대로, 속성 그대로 */
+/* opacity: 0; */
+background-color: tomato;
+}
+
+/* overflow */
+.square > img[alt='pooh 사진']{
+    width: 200px;
+    height: 
+}
+
+.overflow-hidden{
+    overflow: hidden;
+}
+
+.overflow-auto{
+    /* 스크롤 안 보임(권장), 넘칠 때 스크롤, 이미지 안 잘림*/
+    overflow: auto
+}
+
+.overflow-scroll{
+    /* 스크롤 보임, 넘칠 때 스크롤, 이미지 잘림 */
+    overflow: scroll;
+}
+
+.overflow-visible{
+    overflow: visible;
+    /* overflow-x: hidden;
+    overflow-y: auto; */
+    overflow: hidden auto;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습10. 인스타그램 프로필(background)</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(#FFE600, #FF0080, #DB20DB);
+            position: relative;
+        }
+
+        .background{
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+        }
+        .img{
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background-image: url('../img/profile.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:100%;
+            background-color:#b7f8ff;
+            border-radius: 5px solid white;
+
+            position: absolute;
+            top: 10px;
+            left: 10px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background">
+            <div class="img"></div>
+        </div> 
+    </div>
+   
+</body>
+</html>

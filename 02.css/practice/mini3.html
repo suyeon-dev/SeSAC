@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미니실습: 요소쌓임순서 및 z-index</title>
+    <style>
+        .cotainer{
+            width: 500px;
+            height: 500px;
+            border: 2px dotted blue;
+        }
+        .item{
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            position: inline-block;
+        }
+        .item1{
+            background-color: blue;
+        }
+        .item2{
+            background-color: red;
+            top: 30px;
+            left: 30px;
+        }
+        .item3{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h2>item 3, 2, 1 순서대로 보이게 설정</h2>
+    <h2>item 1, 2, 3 순서대로 보이게 설정</h2>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+    </div>
+</body>
+</html>
