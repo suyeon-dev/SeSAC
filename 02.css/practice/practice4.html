@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>실습04</title>
+    <title>실습04: 복합선택자 실습</title>
     <style>
         p.lion{
             background-color: red;
         }
+        /* 사파리 안의 사자만 선택 */
         .zoo ul .lion{
             background-color: greenyellow;
+        }
+        /* 동물원 안의 사자만 선택 */
+        .zoo .lion{
             font-weight: bold;
         }
 
@@ -20,12 +24,23 @@
         .lion{
             color: sienna;
         }
-        #tiger + li{
+        /* #tiger + li{
+            background-color: skyblue;
+        } */
+
+        /* .lion ~ li {
+            background-color: orange;
+        } */
+        /* 사육사 allie를 선택, 배경색 하늘 */
+        .zoo > ul > li.lion + li {
             background-color: skyblue;
         }
-
-        .lion ~ li {
-            background-color: orange;
+        /* 사파리 사자 뒤에 있는 사육사를 모두 선택 */
+        .zoo > ul >li.lion ~li {
+            background-color: gray;
+        }
+        .zoo li.lion ~ li{
+            background-color: gray;
         }
     </style>
 </head>
