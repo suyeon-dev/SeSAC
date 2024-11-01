@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform 여러개 사용해보기</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            border: 1px solid black;
+            transition: 1s;
+        }
+
+        .square1:hover {
+            width: 200px;
+        }
+        .square2:hover {
+            transform: translateX(50px) skewX(-45deg);
+        }
+        .square3:hover {
+            transform: translateX(400px) rotate(180deg);
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .square4:hover {
+            transform: scale(1.5) rotateY(360deg) translateY(16px) ;
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <square class="square square1"></square>
+        <square class="square square2"></square>
+        <square class="square square3"></square>
+        <square class="square square4"></square>
+    </div>
+</body>
+</html>

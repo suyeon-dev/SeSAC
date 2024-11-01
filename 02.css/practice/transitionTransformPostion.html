@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(1) 이미지 연달아 나열하기</title>
+    <style>
+        body{
+            background-color: lightgray;
+            position: relative;
+        }
+        img{
+            position: absolute;
+            width: 300px;
+            transition: 1s;
+        }
+        .beach1{
+            z-index: 3;
+            bottom: 300px;
+            
+        }
+        .beach2{
+            z-index: 2;
+        }
+        .beach3{
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="beach1">
+        <img src="../img/beach1.jpg" alt="해변1">
+    </div>
+    <div class="beach2">
+        <img src="../img/beach2.jpg" alt="해변2">
+    </div>
+    <div class="beach3">
+        <img src="../img/beach3.jpg" alt="해변3">
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation - 글자 움직이기</title>
+    <style>
+        body{
+            margin: 30px 20px;
+            display: flex;
+            /* flex-wrap: wrap; */
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        .text{
+            font-size: 1.2rem;
+            position: absolute;
+            line-height: 1.5;
+            padding-left: 50px;
+            animation: slide-left 4s linear infinite;
+        }
+
+        @keyframes slide-left{
+            0%{
+                left: 100vw;
+                width: 130vw;
+            }
+            50%{
+                left: 50vw;
+                width: 110vw;
+            }
+            80% {
+                left: 0; 
+                width: 90vw;
+            }
+            100%{
+                /* 왼쪽 끝에 도달 후 머무름 */
+                left: 0;
+                /* 최종 너비 유지 */
+                width: 90vw;
+            }
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="text">
+        "As I relax on the sofa and gaze around a room a thought hits me: this is exactly the place I've been looking for all my life. A little hideaway in some sinkhole somewhere. I'd always thought of it as a secret, imaginary place, and can barely believe that it actually exists. I close my eyes and take a breath, and wonder of it all settles over me like a gentle cloud."
+    </div>
+</body>
+</html>

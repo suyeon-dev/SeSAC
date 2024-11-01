@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: lightgray;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+        }
+
+        .card{
+            width: 400px;
+            height: 300px;
+            /* background-color: red; */
+            position: relative; 
+            background-position: center;
+            background-size: contain;
+            transform: skewY(20deg);
+            margin: -80px;
+
+            transition: 1s ease;
+            cursor: pointer;
+        }
+
+        .card:hover{
+            transform: skew(0);
+            z-index: 4;
+            transition: 1s ease-out;
+        }
+
+        .beach1{
+            background-image: url('../img/beach1.jpg');
+            background-repeat: no-repeat;
+            z-index: 3;
+        }
+
+        .beach2{
+            background-image: url('../img/beach2.jpg');
+            background-repeat: no-repeat;
+            z-index: 2;
+        }
+
+        .beach3{
+            background-image: url('../img/beach3.jpg');
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card beach1"></div>
+        <div class="card beach2"></div>
+        <div class="card beach3"></div>
+    </div>
+</body>
+</html>

@@ -7,15 +7,15 @@
       - 중간 step 들을 지정하여 보다 세밀한 스타일 전환 가능
       - @keyframes 로 이루어짐
 
-      단축속성 순서(name과 duration 은 필수 속성)
-      animation: name duration timing-function delay iteration-count direction;
-      - animation-name: @keyframes로 만들어진 애니메이션의 이름
-      - animation-duration: 한 사이클의 애니메이션이 어떤 시간 간격으로 진행될지 설정 (단위: s)
-      - animation-timing-function: 중간 상태의 전환을 어떤 시간 간격으로 진행할지 설정 (default: ease)
+    단축속성 순서(name과 duration 은 필수 속성)
+    animation: name duration timing-function delay iteration-count direction;
+        - animation-name: @keyframes로 만들어진 애니메이션의 이름
+        - animation-duration: 한 사이클의 애니메이션이 어떤 시간 간격으로 진행될지 설정 (단위: s)
+        - animation-timing-function: 중간 상태의 전환을 어떤 시간 간격으로 진행할지 설정 (default: ease)
         - linear, ease, ease-in, ease-in-out, ease-out
-      - animation-delay: 애니메이션 시작을 지연시킬 수 있는 속성 (default: 0s)
-      - animation-iteration-count: 애니메이션 반복 횟수 (default: 1)
-      - animation-direction: 애니메이션이 반복될 때 진행방향 설정 (default: normal)
+        - animation-delay: 애니메이션 시작을 지연시킬 수 있는 속성 (default: 0s)
+        - animation-iteration-count: 애니메이션 반복 횟수 (default: 1)
+        - animation-direction: 애니메이션이 반복될 때 진행방향 설정 (default: normal)
         - normal, reverse, alternate, alternate-reverse
 */
 
