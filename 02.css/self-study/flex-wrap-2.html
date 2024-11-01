@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex-wrap</title>
+    <style>
+        /* align-items : 교차축의 한 줄 정렬방법
+        align-content: 교차축의 여러 줄 정렬방법(=flex-wrap: wrap일때 적용 가능) */
+        /* justify-content: 주축의 정렬방법 */
+        .container{
+            width:200px;
+            height: 500px;
+            background-color: yellow;
+            display: flex;
+            /* 1. 컨테이너 안에 한줄이 되도록 */
+            /* flex-wrap:nowrap; */
+                /* 해당 아이템을 가로, 세로 수직 정렬하기 */
+            /* justify-content: center; */
+            /* align-items: center; */
+            /* 2. 컨테이너 안에 두줄이 되도록 */
+            flex-wrap:wrap;
+                /* 해당 아이템을 하나로 뭉쳐서 가로, 세로 수직 정렬 */
+            /* align-content: center; */
+            /* justify-content: center; */
+            /* align-items: center; */
+                /* 해당 아이템을 각각의 Flex 줄에 가로, 세로 수직 정렬 */
+            justify-content: center;
+            align-items: center;
+            
+            
+        }
+        .item{
+            width: 90px;
+            height: 90px;
+            background-color: gray;
+            /* margin: 10px; */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+    </div>
+</body>
+</html>

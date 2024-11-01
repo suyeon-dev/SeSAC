@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Transfrom</title>
+    <style>
+        .container{
+            display: flex;
+            border: 2px solid black;
+            margin: 10px;
+            width: 500px;
+            height: 500px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .square{
+            width: 100px;
+            height: 100px;
+        }
+        .gray{
+            background-color: gray;
+            opacity: 40%;
+            transform: perspective(500px)ro;
+        }
+        .blue{
+            background-color: blue;
+            opacity: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="square gray"></div>
+        <div class="square blue"></div>
+    </div>
+    
+</body>
+</html>
