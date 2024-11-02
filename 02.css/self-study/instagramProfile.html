@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Porfile</title>
+    <style>
+      div {
+        border-radius: 50%;
+      }
+      .insta {
+        position: relative;
+        background: linear-gradient(45deg, #ffe600 10%, #ff0080, #db20db);
+        width: 300px;
+        height: 300px;
+      }
+      .insta > .img {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        margin: auto;
+
+        /* border + content 크기가 280px */
+        /* 테두리 두께가 5px씩 있으므로 실제 content 크기 영역은 280px-2*5px=270px  */
+        box-sizing: border-box;
+        border: 5px solid white;
+        width: 280px;
+        height: 280px;
+
+        /* 단축속성 */
+        background: white url('../img/profile.png') no-repeat 0 center/cover;
+
+        /* background-image: url('../img/profile.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="insta">
+      <div class="img"></div>
+    </div>
+  </body>
+</html>
