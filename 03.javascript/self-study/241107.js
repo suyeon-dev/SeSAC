@@ -78,3 +78,40 @@ for (let i = 0; i < fruits1.length; i++) {
 }
 console.log(same2);
 console.log(diff2);
+
+//3. 내장 객체 실습(1) 주말과 평일
+let today = new Date();
+console.log(today);
+let day = today.getDay(); //0(일)~6(토)
+
+//-if문
+if (day === 0 || day === 6) {
+  console.log('주말!!');
+}
+console.log('평일');
+
+//-삼항연산자
+day === 0 || day === 6 ? console.log('주말!!') : console.log('평일');
+
+//-switch
+switch (day) {
+  case 0:
+  case 6:
+    console.log('주말!!');
+    break;
+  case 1:
+  case 2:
+  case 3:
+  case 4:
+  case 5:
+    console.log('평일');
+    break;
+  default:
+    console.log('알 수 없음');
+}
+
+//4. 내장 객체 실습(2) 난수 생성
+//0<= x <=10
+console.log('난수: ', Math.floor(Math.random() * 11));
+// 0<=x<10
+// 0<=x<11
