@@ -3,24 +3,24 @@ console.log(document.URL);
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
-console.log(document.title);
+console.log(document.title); //요소 선택하기
 
 //1~4번보다 5번 진짜 많이 사용
 
 /* 1. getElementById */
-console.log(document.getElementById('green'));
+console.log(document.getElementById('green')); //div#green.others
 console.log(document.getElementById('red'));
 
 /* 2. getElementsByClassName*/
 console.log(document.getElementsByClassName('pink')); //배열형태(배열은 아님!)
-console.log(document.getElementsByClassName('pink')[0]);
+console.log(document.getElementsByClassName('pink')[0]); //<div class="pink">1</div>
 // console.log(document.getElementsByClassName('pink')[0]);
 console.log(document.getElementsByClassName('others'));
 console.log(document.getElementsByClassName('others')[0]);
 
 /* 3. getElementsByTagName */
 console.log(document.getElementsByTagName('div'));
-console.log(document.getElementsByTagName('div')[0]);
+console.log(document.getElementsByTagName('div')[0]); //<div class="pink">1</div>
 
 /* 4. getElementByName(name 속성값) */
 console.log(document.getElementsByName('id')); //NodeList(2) [input, input]
@@ -28,7 +28,7 @@ console.log(document.getElementsByName('id')); //NodeList(2) [input, input]
 /* 5. querySelector('CSS선택자')*/
 // 반환값: 태그
 console.log('----');
-console.log(document.querySelector('.pink'));
+console.log(document.querySelector('.pink')); //<div class="pink">1</div>
 console.log(document.querySelector('.others')); //2개 중 위에 있는 #green 하나 가져옴
 console.log(document.querySelector('#green'));
 console.log(document.querySelector('#red'));

@@ -11,5 +11,5 @@ div1.innerText = '     여기는 <b>첫번째</b> 태그입니다.&hearts;     /
 console.log(div1.innerText); //개발자 도구 공백이 안 보임
 div1.innerHTML = '여기는 <b>첫번째</b> 태그입니다.&hearts;';
 console.log(div1.innerHTML); //개발자 도구 공백 적용
-div1.textContent = '     여기는 <b>첫번째</b> 태그입니다.&hearts;     /'; //태그가 문자열로 읽힘
-console.log(div1);
+div1.textContent = '     여기는 <b>첫번째</b> 태그입니다.&hearts;     /';
+console.log(div1); //태그가 문자열로 읽힘
