@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    const section = document.querySelector('section'); const icecreams = [ '내가
+    아인슈페너?!', '엄마는 외계인', '민트 초콜릿 칩', '뉴욕 치즈케이크', '아이스
+    초당옥수수', '초콜릿 무스', '체리쥬빌레', '뮤! 넌 내거야', '오레오 쿠키 앤
+    크림', ]; for (let i = 1; i <= 9; i++) { // img 태그 생성 let img =
+    document.createElement('img'); img.classList.add('img-box');
+    img.setAttribute('src', `./imgs/icecream${i}.png`); // h3 태그 생성 let h3 =
+    document.createElement('h3'); h3.classList.add('text-center');
+    h3.textContent = `Top ${i}`; // div 태그 생성 let div =
+    document.createElement('div'); div.classList.add('text-center');
+    div.textContent = icecreams[i - 1]; // icecreams 배열의 맛 이름 설정 //
+    article 태그 생성 let article = document.createElement('article');
+    article.classList.add('article-box'); article.append(img, h3, div); //
+    section 요소에 article 요소 추가 section.append(article); }
+  </body>
+</html>

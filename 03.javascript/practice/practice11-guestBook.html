@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>방명록 만들기</title>
+  </head>
+  <body>
+    <h1>여기는 방명록!!</h1>
+    <form>
+      <label for="writer">작성자</label>
+      <input type="text" id="writer" autocomplete="off" />
+      <br />
+      <br />
+
+      <label for="content">내용</label>
+      <input type="text" id="content" style="width: 500px" autocomplete="off" />
+      <br />
+      <br />
+
+      <button type="button" onclick="writeNote();">등록</button>
+    </form>
+
+    <br />
+    <br />
+
+    <table id="table" border="1" cellpadding="10" cellspacing="1">
+      <tr>
+        <th>작성자</th>
+        <th>내용</th>
+        <th>작성일</th>
+      </tr>
+      <!-- 
+        코드 추가 예시
+        <tr>
+          <td>홍길동</td>
+          <td>하이</td>
+          <td>2022-10-05 12:34</td>
+        </tr>
+      -->
+    </table>
+
+    <script>
+      // TODO: practice14_설명.png 이미지의 조건을 만족하는 js 코드 작성
+      // writeNote() 함수를 미리 정의해두었습니다.
+
+      //작성자와 내용 입력 필드 변수로 가져오기
+      let writer = document.querySelector('#writer');
+      let content = document.querySelector('#content');
+      console.log(writer, content);
+
+      // [등록] 버튼 클릭시 writeNote() 함수가 실행되도록 인라인 방식으로 미리 설정해 두었습니다.
+      function writeNote() {
+        //작성자나 내용이 빈 경우 경고하고 함수 종료
+        if (writer.value === '' || content.value === '') {
+          alert('작성자와 내용을 모두 입력해주세요 🙂');
+          return;
+        }
+
+        //새로운 행 생성
+        const tr = document.createElement('tr');
+
+        //작성자 셀 생성
+        const writerTd = document.createElement('td');
+        writerTd.textContent = writer.value;
+
+        //내용 셀
+        const contentTd = document.createElement('td');
+        contentTd.textContent = content.value;
+
+        //작성일
+        const dateTd = document.createElement('td');
+        const today = new Date();
+        dateTd.textContent = today.toLocaleDateString();
+
+        //조립하기~
+        tr.append(writerTd, contentTd, dateTd);
+        document.querySelector('#table').append(tr);
+
+        //입력 필드 초기화
+        writer.value = '';
+        content.value = '';
+      }
+    </script>
+  </body>
+</html>
