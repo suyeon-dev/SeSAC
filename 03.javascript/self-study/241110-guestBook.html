@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>방명록 만들기</title>
+  </head>
+  <body>
+    <h1>여기는 방명록!!</h1>
+    <form>
+      <label for="writer">작성자</label>
+      <input type="text" id="writer" autocomplete="off" />
+      <br />
+      <br />
+
+      <label for="content">내용</label>
+      <input type="text" id="content" style="width: 500px" autocomplete="off" />
+      <br />
+      <br />
+
+      <button type="button" onclick="writeNote();">등록</button>
+    </form>
+
+    <br />
+    <br />
+
+    <table id="table" border="1" cellpadding="10" cellspacing="1">
+      <tr>
+        <th>작성자</th>
+        <th>내용</th>
+        <th>작성일</th>
+      </tr>
+      <!-- 
+        코드 추가 예시
+        <tr>
+          <td>홍길동</td>
+          <td>하이</td>
+          <td>2022-10-05 12:34</td>
+        </tr>
+      -->
+    </table>
+
+    <script>
+      // TODO: practice14_설명.png 이미지의 조건을 만족하는 js 코드 작성
+      // writeNote() 함수를 미리 정의해두었습니다.
+
+      //방명록의 테이블 요소 & 입력 필드 요소를 변수에 저장
+      const table = document.getElementById('table');
+      const writerInput = document.getElementById('writer');
+      const contentInput = document.getElementById('content');
+
+      // [등록] 버튼 클릭시 writeNote() 함수가 실행되도록 인라인 방식으로 미리 설정해 두었습니다.
+      function writeNote() {
+        // e.preventDefault(); //type='button'이 지정되어 있어 기본 동작 막을 필요 없음
+
+        //작성자와 내용 입력값 가져오기
+        writerValue = writerInput.value.trim();
+        contentValue = contentInput.value.trim();
+
+        //유효성 검사: 빈 입력값이 있으면 알림 표시
+        if (writerValue === '' || contentValue === '') {
+          alert('작성자와 내용을 모두 입력해주세요');
+          return;
+        }
+
+        //새로운 행(tr)과 열(td)
+        const newTr = document.createElement('tr');
+        const writerTd = document.createElement('td');
+        const contentTd = document.createElement('td');
+        const dateTd = document.createElement('td');
+
+        //td 요소 : 작성자, 내용
+        writerTd.textContent = writerValue;
+        contentTd.textContent = contentValue;
+
+        // td 요소 : 작성일
+        const now = new Date();
+        const formattedDate =
+          `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}` +
+          `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
+        dateTd.textContent = formattedDate;
+
+        // dateTd.textContent = new Date().toLocaleString('ko-KR', {
+        //   year: 'numeric',
+        //   month: 'numeric',
+        //   day: 'numeric',
+        //   hour: 'numeric',
+        //   minute: 'numeric',
+        //   hour12: false, //24시간제로 표시
+        // });
+
+        //tr 요소에 td 요소 추가
+        newTr.append(writerTd, contentTd, dateTd);
+
+        //table 요소에 새 행을 추가
+        table.append(newTr);
+
+        //입력 필드 초기화
+        writerInput.value = '';
+        contentInput.value = '';
+      }
+    </script>
+  </body>
+</html>

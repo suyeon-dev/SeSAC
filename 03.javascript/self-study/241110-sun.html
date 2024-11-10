@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>241110-sun: JS dom api 주요 기능 과제 복습</title>
+    <style>
+      /* 2. todoList */
+      li {
+        margin: 4px 0;
+      }
+
+      .done > span {
+        text-decoration: line-through;
+        font-style: italic;
+        color: #bbb;
+      }
+
+      .todo > span {
+        font-weight: 700;
+        background-color: rgb(255, 233, 111);
+      }
+      /* 3. 아이스크림 */
+      p {
+        padding: 10px 20px;
+        background-color: rgb(248, 255, 230);
+        border-radius: 10px;
+      }
+
+      .article-box {
+        display: inline-block;
+        margin: 10px;
+        padding: 30px;
+        border-radius: 20px;
+        background-color: rgb(255, 248, 248);
+        border: 1px solid rgb(250, 226, 231);
+      }
+
+      .img-box {
+        width: 180px;
+        height: 180px;
+        background-color: rgb(250, 226, 231);
+        border-radius: 50%;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>1. 민트초코 : html 내용 변경</h1>
+    <div>민트 초코는 <span>맛있다 >_<</span></div>
+    <hr />
+
+    <h1>2. todoList : html 클래스 제어하기</h1>
+    <div class="container">
+      <h2>TODO List</h2>
+      <ul>
+        <li class="todo">
+          <span>점심 먹기</span>
+        </li>
+        <li class="todo">
+          <span>커피 마시기</span>
+        </li>
+        <li class="done">
+          <span>과제 완성하기</span>
+        </li>
+        <li class="done">
+          <span>운동하기</span>
+        </li>
+        <li class="done">
+          <span>저녁먹기</span>
+        </li>
+      </ul>
+    </div>
+    <hr />
+
+    <h1>아이스크림</h1>
+    <h2 class="text-center">이달의 맛 BEST9</h2>
+    <section class="text-center">
+      <!-- 이 곳에 article 태그가 추가되도록! -->
+    </section>
+
+    <hr />
+  </body>
+  <script defer>
+    // 1. html 내용 변경
+    let span = document.querySelector('div span');
+    console.log(span);
+    span.textContent = '맛없다 --;';
+    span.style.color = 'red';
+    span.style.fontWeight = 'bold';
+
+    //2. todoList
+    let todo = document.querySelectorAll('.todo');
+    let done = document.querySelectorAll('.done');
+    console.log(todo, done);
+
+    for (let li of todo) {
+      li.className = 'done';
+    }
+    for (let li of done) {
+      li.className = 'todo';
+    }
+
+    // 3. 아이스크림
+    // TODO: 문제 조건을 만족하는 js 코드 작성
+    // (참고) article-box, img-box, text-center 클래스에 대한 스타일시트는 haed > style 태그에 이미 정의되어 있습니다.
+
+    const section = document.querySelector('section');
+    const icecreams = [
+      '내가 아인슈페너?!',
+      '엄마는 외계인',
+      '민트 초콜릿 칩',
+      '뉴욕 치즈케이크',
+      '아이스 초당옥수수',
+      '초콜릿 무스',
+      '체리쥬빌레',
+      '뮤! 넌 내거야',
+      '오레오 쿠키 앤 크림',
+    ];
+
+    for (i = 1; i <= icecreams.length; i++) {
+      let img = document.createElement('img');
+      img.classList.add('img-box');
+      img.setAttribute('src', `./imgs/icecream${i}.png`);
+      img.setAttribute('alt', icecreams[i - 1]); //이거 빠짐 & 배열 이름 오타
+
+      let h3 = document.createElement('h3');
+      h3.textContent = `Top ${i}`;
+      h3.classList.add('text-center');
+
+      let div = document.createElement('div');
+      div.textContent = icecreams[i - 1];
+      div.classList.add('text-center');
+
+      let article = document.createElement('article');
+      article.classList.add('article-box');
+      article.append(img, h3, div);
+
+      section.append(article);
+    }
+  </script>
+</html>

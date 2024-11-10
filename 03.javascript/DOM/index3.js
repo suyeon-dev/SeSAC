@@ -47,7 +47,6 @@ function changeColor() {
     div.style.backgroundColor = 'skyblue';
   }
   //막내 요소만 노랑색으로 변경 (나중에 만들어보세요~!)
-  //   div[divs.length - 1].style = 'yellow';
 }
 
 // **btn4
@@ -157,7 +156,7 @@ todoForm.addEventListener('submit', function (e) {
 
 // ------------------------------------------------
 // 폼이벤트
-/* 4. [change 이벤트] */
+/* 5. [change 이벤트] */
 const chgInput = document.querySelector('#change-input');
 chgInput.addEventListener('change', function () {
   //input창 포커싱 된 상태에서 브라우저 창의 다른 곳을 클릭한 경우
