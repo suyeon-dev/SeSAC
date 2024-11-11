@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스케줄 등록하기 (jQuery 실습)</title>
+    <style>
+      /* 스케줄 입력 */
+      #add {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .add__button {
+        width: 45px;
+      }
+
+      /* 달력 전체 */
+      .calender {
+        width: 600px;
+        height: 800px;
+      }
+      .calender__header {
+        text-align: center;
+        color: green;
+      }
+      .calender__grid {
+        background-color: yellow;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+      }
+      .calender__grid-dayWeek {
+        text-align: center;
+      }
+
+      /* 달력 세부 스타일링*/
+      .sun {
+        color: red;
+      }
+      .sat {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 스케줄 등록 -->
+    <section id="add">
+      <div class="add__date">
+        <label for="date">날짜 : </label>
+        <input type="text" id="date" />
+      </div>
+      <div class="add__content">
+        <label for="content">내용 : </label>
+        <input type="text" id="content" />
+      </div>
+      <button class="add__button" type="submit">작성</button>
+    </section>
+    <!-- 달력 -->
+    <section class="calender">
+      <h2 class="calender__header">2024년 11월</h2>
+      <div class="calender__grid">
+        <!-- 요일-->
+        <div class="day sun">일</div>
+        <div class="day">월</div>
+        <div class="day">화</div>
+        <div class="day">수</div>
+        <div class="day">목</div>
+        <div class="day">금</div>
+        <div class="day sat">토</div>
+        <!-- 1주 -->
+        div
+      </div>
+    </section>
+  </body>
+</html>
