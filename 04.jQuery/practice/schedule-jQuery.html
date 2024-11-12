@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스케줄 등록하기 (jQuery 실습)</title>
+    <!-- jQuery CDN-->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      /* 스케줄 입력 */
+      #add {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .add__button {
+        width: 45px;
+      }
+
+      /* 달력 전체 */
+      .calender {
+        width: 600px;
+        height: 800px;
+      }
+      .calender__header {
+        text-align: center;
+        color: green;
+      }
+      .calender__grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+      }
+      .day {
+        /* background-color: yellow; */
+        height: 30px;
+        line-height: 30px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      .date {
+        height: 80px;
+        border: 1px solid white;
+        cursor: pointer;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 80px;
+        max-width: 100%;
+      }
+
+      .event {
+        font-size: 0.8rem;
+        margin: 5px;
+        color: black;
+      }
+      .date::-webkit-scrollbar {
+        width: 4px;
+      }
+      .date::-webkit-scrollbar-thumb {
+        background: darkgray;
+        border-radius: 10px;
+      }
+
+      /* 달력 공휴일 */
+      .calender__grid .day:nth-child(1) {
+        color: red;
+      }
+      .calender__grid .date:nth-child(7n + 1) {
+        color: red;
+      }
+      .calender__grid .day:nth-child(7) {
+        color: blue;
+      }
+      .calender__grid .date:nth-child(7n) {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 스케줄 등록 -->
+    <section id="add">
+      <h3>내 스케줄 등록하기</h3>
+      <div class="add__date">
+        <label for="date">날짜 : </label>
+        <input type="text" id="date" />
+      </div>
+      <div class="add__content">
+        <label for="content">내용 : </label>
+        <input type="text" id="content" />
+      </div>
+      <button class="add__button" type="submit">작성</button>
+    </section>
+    <!-- 달력 -->
+    <section class="calender">
+      <h2 class="calender__header">2024년 11월</h2>
+      <div class="calender__grid">
+        <!-- 요일-->
+        <div class="day">일</div>
+        <div class="day">월</div>
+        <div class="day">화</div>
+        <div class="day">수</div>
+        <div class="day">목</div>
+        <div class="day">금</div>
+        <div class="day">토</div>
+        <!-- 1주 -->
+        <div class="date"></div>
+        <div class="date"></div>
+        <div class="date"></div>
+        <div class="date"></div>
+        <div class="date"></div>
+        <div class="date">1</div>
+        <div class="date">2</div>
+        <!-- 2주 -->
+        <div class="date">3</div>
+        <div class="date">4</div>
+        <div class="date">5</div>
+        <div class="date">6</div>
+        <div class="date">7</div>
+        <div class="date">8</div>
+        <div class="date">9</div>
+        <!-- 3주 -->
+        <div class="date">10</div>
+        <div class="date">11</div>
+        <div class="date">12</div>
+        <div class="date">13</div>
+        <div class="date">14</div>
+        <div class="date">15</div>
+        <div class="date">16</div>
+        <!-- 4주 -->
+        <div class="date">17</div>
+        <div class="date">18</div>
+        <div class="date">19</div>
+        <div class="date">20</div>
+        <div class="date">21</div>
+        <div class="date">22</div>
+        <div class="date">23</div>
+        <!-- 5주 -->
+        <div class="date">24</div>
+        <div class="date">25</div>
+        <div class="date">26</div>
+        <div class="date">27</div>
+        <div class="date">28</div>
+        <div class="date">29</div>
+        <div class="date">30</div>
+      </div>
+    </section>
+  </body>
+  <script>
+    //1. 달력의 날짜 div 클릭 시 날짜 Input에 날짜가 채워짐
+    $('.date').click(function () {
+      // 클릭한 .date 요소가 event 클래스가 아닐 때만 텍스트 input에 가져옴
+      const selectedDate = this.childNodes[0]?.nodeValue;
+      if (selectedDate) {
+        $('#date').val(selectedDate);
+      } else {
+        alert('날짜를 클릭하면 자동으로 입력칸에 채워집니다. 😉');
+      }
+    });
+
+    //2. 등록 버튼 클릭 시 input 내용 해당 날짜 셀에 추가됨
+    $('.add__button').click(function () {
+      // 입력창에서 선택된 날짜 & 내용 가져오기
+      const date = $('#date').val();
+      const content = $('#content').val();
+
+      if (date && content) {
+        // 날짜 셀 선택
+        const targetCell = $('.date').filter(function () {
+          return this.childNodes[0]?.nodeValue === date;
+        });
+        targetCell.append(`<p class='event'>✔️${content}</p>`);
+        // $(`.date:contains(${date})`).append(`<p class='event'>✔️${content}</p>`) //망함
+
+        //입력칸 초기화
+        $('#date').val('');
+        $($('#content')).val('');
+      } else {
+        alert('날짜와 내용을 입력해주세요.');
+      }
+    });
+  </script>
+</html>
