@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <!-- TODO1: jQuery CDN 불러오기 -->
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script> -->
+    <!-- jQuery UI CDN -->
+    <!-- <script
+      src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"
+      integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI="
+      crossorigin="anonymous"
+    ></script> -->
+    <style>
+      div {
+        width: 100;
+        height: 100;
+      }
+
+      div:hover {
+        cursor: pointer;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .orange {
+        background-color: orange;
+      }
+
+      .yellow {
+        background-color: yellow;
+      }
+
+      .green {
+        background-color: green;
+      }
+
+      .blue {
+        background-color: blue;
+      }
+
+      .purple {
+        background-color: purple;
+      }
+    </style>
+    <script>
+      let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+
+      // TODO2: changeColor 함수 내부 작성
+      function changeColor() {
+        // console.log($('div'));
+
+        //방법1: switchClass
+        if ($('div').hasClass('red')) {
+          $('div').switchClass('red', 'orange');
+        } else if ($('div').hasClass('orange')) {
+          $('div').switchClass('orange', 'yellow');
+        } else if ($('div').hasClass('yellow')) {
+          $('div').switchClass('yellow', 'green');
+        } else if ($('div').hasClass('green')) {
+          $('div').switchClass('green', 'blue');
+        } else if ($('div').hasClass('blue')) {
+          $('div').switchClass('blue', 'orange');
+        }
+
+        //방법2: 배열 활용 순환구조
+        let nowClass = $('div').attr('class'); //div의 현재 클래스값 가져오기
+        let i = colors.indexOf(nowClass); //현재 클래스의 인덱스 찾기
+        // 다음 색상 인덱스 계산 (0 ~ 5 -> 순환 구조)
+        let nextIndex = (i + 1) % colors.length;
+        // div 클래스 변경
+        $('div').removeClass(nowClass).addClass(colors[nextIndex]);
+
+        //방법3: 배열 활용
+        let nowClass = $('div').attr('class'); // 현재 클래스 값 가져오기
+        let i = colors.indexOf(nowClass); // 현재 클래스의 인덱스 찾기
+        //마지막 색상에서 처음으로 순환
+        if (i == colors.length - 1) $('div').switchClass(nowClass, colors[0]);
+        //현재 색상이 마지막이 아니라면 다음 색상으로 이동
+        else $('div').switchClass(nowClass, colors[i + 1]);
+
+        //방법4: vanillaJS
+        const div = document.querySelector('div');
+        console.log(div);
+
+        const nowClass = div.className; //현재 클래스 가져오기
+        const i = colors.indexOf(nowClass); //현재 클래스의 인덱스 가져오기
+
+        //마지막 색상이면 첫 번째 색상으로 순환
+        if (i === colors.length - 1) {
+          div.classList.remove(nowClass);
+          div.classList.add(colors[0]);
+        } else {
+          //다음 색상으로 변경
+          div.classList.remove(nowClass);
+          div.classList.add(colors[i + 1]);
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="red" onclick="changeColor();"></div>
+  </body>
+</html>
