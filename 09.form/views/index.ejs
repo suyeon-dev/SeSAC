@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form 전송</title>
+  </head>
+  <body>
+    <h2>GET 요청</h2>
+    <form action="/getForm" method="get">
+      <label> id: <input type="text" name="id" /> </label>
+      <br />
+      <label> email: <input type="email" name="email" /> </label>
+      <br />
+      <label> pw: <input type="password" name="pw" /> </label>
+
+      <!-- submit 타입(default)이 서버에 실제 전송이 이루어짐 -->
+      <button type="button">제출?</button>
+      <button type="submit">제출</button>
+    </form>
+    <h2>POST 요청</h2>
+    <form action="/postForm" method="post">
+      <label for="id">ID</label>
+      <input
+        type="text"
+        id="id"
+        name="id"
+        placeholder="ID 작성해주세요"
+        required
+        title="아이디는 대소문자, 숫자, 한글로 구성된 네글자 이상의 문자여야 합니다."
+        pattern="^([a-zA-Z0-9가-힣]){4,}$"
+      />
+      <!-- required: 필수 속성 -->
+      <br />
+      <label for="pw">PW</label>
+      <input
+        type="password"
+        id="pw"
+        name="pw"
+        placeholder="비밀번호 작성"
+        required
+        title="비밀번호는 영어 소문자, 숫자로 구성된 8~12글자의 문자여야 합니다."
+        pattern="^([a-z0-9]){8,12}$"
+      />
+      <br />
+      <label for="">
+        <input type="checkbox" name="agree" value="marketing" />
+        마케팅 동의
+      </label>
+      <label for="">
+        <input type="checkbox" name="agree" value="private" />
+        개인정보 수집 동의
+      </label>
+      <label for="">
+        <input type="checkbox" name="agree" value="use" />
+        이용약관 동의
+      </label>
+      <br />
+      <input type="submit" value="제출" />
+    </form>
+
+    <h2>유효성 검사</h2>
+    <!-- 여기서 this는 form 그 자체 -->
+    <form
+      action="/js-form-check"
+      method="post"
+      name="validationForm"
+      target="_blank"
+      onSubmit="return checkForm(this)"
+    >
+      <input
+        type="text"
+        name="id2"
+        title="최소 한 글자"
+        minlength="1"
+        placeholder="최소 한 글자를 작성해주세요"
+        id="input"
+      />
+      <br />
+      <span>우편물 수령 장소</span>
+      <label><input type="checkbox" name="mail" value="자택" />자택</label>
+      <label><input type="checkbox" name="mail" value="회사" />회사</label>
+      <button>제출</button>
+    </form>
+    <br /><br /><br />
+
+    <h2>실습문제</h2>
+    <a href="/practice1">실습문제1</a>
+    <a href="/practice2">실습문제2</a>
+
+    <script>
+      function checkForm(form) {
+        // this = 나 자신을 의미, 여기서는 form 태그 그 자체
+        // const form2 = document.forms['validationForm'];
+        console.log(form);
+        console.log(form.id2); //선택된폼.name
+        console.log(form.input); //선택된폼.id
+
+        if (form.id2.value.trim() === '') {
+          alert('아이디를 입력해주세요');
+
+          //return false를 해야만 submit 이벤트를 막을 수 있음
+          return false;
+        }
+
+        //체크박스 하나라도 선택해야 제출되도록
+        // -형태 확인해보기
+        console.log(form.mail); //배열 형태 RadioNodeList(2) [input, input, value: '']
+        // -checkbox 상태가 둘 다 false라면 return false
+        //if (form.mail[0].checked === false && form.mail[1].checked === false)
+        if (!form.mail[0].checked && !form.mail[1].checked) {
+          alert('우편물 수령 장소를 선택해주세요.');
+          return false; //이벤트 막기
+        }
+      }
+    </script>
+  </body>
+</html>

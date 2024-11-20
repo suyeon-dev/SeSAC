@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>결과 페이지</title>
+    <style>
+      span {
+        color: coral;
+        font-weight: 700;
+      }
+      div {
+        border: solid 1px lightgray;
+        border-radius: 10px;
+        box-shadow: 0 0 5px 0px lightgray;
+        padding: 10px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2><%=title %> 결과 확인하기</h2>
+    <h3><span><%=userInfo.name %></span>님 환영합니다!</h3>
+    <div>성별: <%=userInfo.gender %></div>
+    <div>
+      생년월일: <%=userInfo.birth[0]%>/ <%=userInfo.birth[1]%>/
+      <%=userInfo.birth[2]%>
+    </div>
+    <div>관심사: <%=userInfo.interest %></div>
+    <hr />
+
+    <h3>다른 태그 작성해보기</h3>
+    <p>
+      좋아하는 색깔:
+      <span style="color: <%=userInfo.favoriteColor %>"
+        ><%=userInfo.favoriteColor %></span
+      >
+    </p>
+    <p>
+      행복 지수:
+      <span><%=userInfo.happiness %>점</span>/100점
+    </p>
+
+    <a href="/">홈으로 이동하기</a>
+  </body>
+</html>

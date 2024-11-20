@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습문제 2</title>
+    <style>
+      div {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>실습문제2</h1>
+    <form action="/postPractice" method="post" target="_blank">
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" required />
+      <br /><br />
+
+      <fieldset>
+        <legend>성별</legend>
+        <label for="">
+          <input type="radio" name="gender" value="남자" required />
+          남자
+        </label>
+        <label for="">
+          <input type="radio" name="gender" value="여자" />
+          여자
+        </label>
+      </fieldset>
+
+      <br />
+
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="birth" id="birth-year">
+          <% for(i=2024;i>=1930;i--){ %>
+          <option value="<%=i %>"><%= i%></option>
+          <% } %>
+        </select>
+        <label for="birth-year">년</label>
+        <select name="birth" id="birth-month">
+          <% for(i=1;i<13;i++){ %>
+          <option value="<%=i%>"><%=i%></option>
+          <% } %>
+        </select>
+        <label for="birth-month">월</label>
+        <select name="birth" id="birth-date">
+          <% for(i=1;i<32;i++){ %>
+          <option value="<%=i%>"><%=i%></option>
+          <% } %>
+        </select>
+        <label for="birth-month">일</label>
+      </fieldset>
+      <br />
+
+      <fieldset>
+        <legend>관심사</legend>
+        <label for="">
+          <input type="checkbox" name="interest" value="여행" />
+          여행
+        </label>
+        <label for="">
+          <input type="checkbox" name="interest" value="패션" />
+          패션
+        </label>
+        <label for="">
+          <input type="checkbox" name="interest" value="음식" />
+          음식
+        </label>
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>선택</legend>
+        <div>
+          <label for="">
+            좋아하는 색깔
+            <input type="color" name="favoriteColor" />
+          </label>
+        </div>
+        <div>
+          <label for="happiness">
+            행복 지수
+            <input
+              type="range"
+              id="happiness"
+              name="happiness"
+              min="0"
+              max="100"
+            />
+          </label>
+        </div>
+      </fieldset>
+      <br />
+      <button>회원가입</button>
+    </form>
+  </body>
+</html>

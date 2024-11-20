@@ -1,5 +1,5 @@
-const http = require('http');
-const fs = require('fs');
+const http = require('http'); //Http 모듈 불러오기 for Http 서버 만들기
+const fs = require('fs'); // FS모듈 불러오기
 
 //서버 만들기 -> 요청과 응답 제어
 const server = http.createServer(function (request, response) {

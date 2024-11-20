@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const PORT = 8080;
 
-// middleware 설정 추가
-// 뷰 엔진 설정
+// 뷰 엔진, 뷰 폴더 설정
 app.set('view engine', 'ejs');
-app.set('/views', 'views');
+// app.set('/views', 'views'); //처음에 잘못씀
+app.set('views', './views');
 
 // static 폴더 설정 추가
 // - static 이라는 경로를 /public 대신에 사용할 예정
@@ -17,7 +17,7 @@ app.get('/', function (request, response) {
    * - response: 서버가 클라이언트에게 보내는 응답
    */
   console.log(request);
-  //   response.send('hello express!!!!');
+  //   response.send('hello express!!!!');//http의 end랑 비슷한 send
   response.render('test', {
     isLogin: false,
     userInfo: {
