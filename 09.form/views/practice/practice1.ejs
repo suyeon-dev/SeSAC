@@ -7,6 +7,7 @@
   </head>
   <body>
     <h1>실습문제1</h1>
+    <!-- (!) 이미 쓰고 있는 api 주소(practice1)은 action으로 쓰면 안 됨 -->
     <form action="/getPractice" method="get" target="_blank">
       <label for="name">이름</label>
       <input type="text" id="name" name="name" required />
@@ -14,6 +15,8 @@
 
       <fieldset>
         <legend>성별</legend>
+        <!-- (!) object의 key값이 되는 name은 반드시 써야함 -->
+        <!-- - label 하나에 input 태그 하나 -->
         <label for="">
           <input type="radio" name="gender" value="남자" />
           남자
@@ -33,6 +36,7 @@
           <option value="<%=i %>"><%= i%></option>
           <% } %>
         </select>
+        <!-- (todo) 코드 정리하기: select, span으로 충분함 -->
         <label for="birth-year">년</label>
         <select name="birth" id="birth-month">
           <% for(i=1;i<13;i++){ %>

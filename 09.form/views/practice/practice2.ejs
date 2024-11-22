@@ -12,6 +12,7 @@
   </head>
   <body>
     <h1>실습문제2</h1>
+    <!-- 메서드가 다르면 주소가 같아도 상관없음. action="/practice2"도 가능 -->
     <form action="/postPractice" method="post" target="_blank">
       <label for="name">이름</label>
       <input type="text" id="name" name="name" required />
@@ -90,9 +91,15 @@
             />
           </label>
         </div>
+        <label for=""
+          >다짐 한마디
+          <textarea name="comment" cols="30" rows="10"></textarea>
+        </label>
       </fieldset>
       <br />
-      <button>회원가입</button>
+      <!-- <button>회원가입</button> -->
+      <!-- button말고 input submit로 만들어보기 -->
+      <input type="submit" value="제출" />
     </form>
   </body>
 </html>

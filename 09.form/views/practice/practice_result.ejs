@@ -21,7 +21,9 @@
   <body>
     <h2><%=title %> 결과 확인하기</h2>
     <h3><span><%=userInfo.name %></span>님 환영합니다!</h3>
+    <!-- (todo) 코드 정리 : ul, li태그로 정리하기 -->
     <div>성별: <%=userInfo.gender %></div>
+    <!-- (todo) year, month, date 인댁스말고 이름으로 받아오기 -->
     <div>
       생년월일: <%=userInfo.birth[0]%>/ <%=userInfo.birth[1]%>/
       <%=userInfo.birth[2]%>
@@ -29,10 +31,13 @@
     <div>관심사: <%=userInfo.interest %></div>
     <hr />
 
+    <!-- (!) addInfo -->
+
+    <% if(addInfo){ %>
     <h3>다른 태그 작성해보기</h3>
     <p>
       좋아하는 색깔:
-      <span style="color: <%=userInfo.favoriteColor %>"
+      <span class="color" style="color: <%=userInfo.favoriteColor %>"
         ><%=userInfo.favoriteColor %></span
       >
     </p>
@@ -40,7 +45,16 @@
       행복 지수:
       <span><%=userInfo.happiness %>점</span>/100점
     </p>
-
+    <%} %>
     <a href="/">홈으로 이동하기</a>
+
+    <!-- (!) 좋아하는 색깔 색상 변경 css 인라인이 아니라 js로 해보기 -->
+    <!-- - js 안에서도 ejs 문법 가능 -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const colorSpan = document.querySelector('.colr');
+        colorSpan.style.color = '<%=userInfo.color%>';
+      });
+    </script>
   </body>
 </html>

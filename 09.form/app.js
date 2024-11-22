@@ -66,23 +66,28 @@ app.get('/practice2', (req, res) => {
 
 // 3. 주소 지정 form GET 요청
 app.get('/getPractice', (req, res) => {
-  console.log(req.query);
+  // console.log(req.query);
   //   res.send('form data get 요청 성공!');
   res.render('practice/practice_result', {
     title: '실습문제1',
     userInfo: req.query,
+    addInfo: false, //(!) practice1에서는 적은 정보를 주고 있음
   });
 });
 
 //4. 주소 지정 form POST 요청
 app.post('/postPractice', (req, res) => {
+  // console.log(req.body);
+  // res.send('post 응답 완료);
+  // (!) key 값 3번과 동일하게 userInfo로 맞춰줘야함
   res.render('practice/practice_result', {
     title: '실습문제2',
     userInfo: req.body,
+    addInfo: true,
   });
 });
 
-// API 총 4개 작업함
+// API 총 4개 작업
 
 app.listen(PORT, function () {
   // 서버가 실행되면 동작하는 작업
