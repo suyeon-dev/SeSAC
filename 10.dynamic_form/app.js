@@ -55,7 +55,7 @@ app.get('/fetch', (req, res) => {
 
 app.post('/fetch', (req, res) => {
   console.log(req.body);
-  res.send(req.body);
+  res.send(req.body); //{ name: '', gender: '' }
 });
 
 app.listen(PORT, () => {

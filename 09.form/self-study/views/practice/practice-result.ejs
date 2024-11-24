@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        color: coral;
+      }
+    </style>
+  </head>
+  <body>
+    <h2><%=title %> 결과 페이지</h2>
+    <h3><span><%=userInfo.name %></span>님 환영합니다!</h3>
+
+    <ul>
+      <li>성별 : <%=userInfo.gender %></li>
+      <li>
+        생년월일 : <%=userInfo.year%>/ <%=userInfo.month%>/ <%=userInfo.date%>
+      </li>
+      <li>관심사 : <%=userInfo.interest%></li>
+    </ul>
+
+    <% if(addInfo){ %>
+    <hr />
+    <h3>다른 태그 작성해보기</h3>
+    <ul>
+      <li>좋아하는 색깔 : <span class="color"><%= userInfo.color%></span></li>
+
+      <li>오늘의 행복 지수❤️ : <%= userInfo.happiness %>/100점</li>
+      <li>다짐 한마디 : <%= userInfo.comment %></li>
+    </ul>
+    <% } %>
+    <a href="/">홈으로 이동하기</a>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const colorSpan = document.querySelector('.color');
+        colorSpan.style.color = '<%= userInfo.color%>';
+      });
+    </script>
+  </body>
+</html>

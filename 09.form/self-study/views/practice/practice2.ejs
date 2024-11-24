@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>과제2</title>
+  </head>
+  <body>
+    <h2>과제2 - POST 요청</h2>
+    <form action="/postPractice" method="post">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" />
+        <br />
+        <br />
+        
+        <fieldset>
+          <legend>성별</legend>
+          <input type="radio" name="gender" id="male" value="남자"></input>
+          <label for="male">남자</label>
+          <input type="radio" name="gender" id="female" value="여자"></input>
+          <label for="female">여자</label>
+        </fieldset>
+        <br>
+  
+        <fieldset>
+          <legend>생년월일</legend>
+          <select name="year" id="year">
+            <% for(i=1930;i<2025;i++){ %>
+             <option value="<%= i%>"><%= i%></option>
+            <% } %>
+          </select> 
+          <label for="">년</label>
+  
+          <select name="month" id="month">
+            <% for(i=1;i<13;i++){ %>
+             <option value="<%= i%>"><%= i%></option>
+            <% } %>
+          </select>
+          <span>월</span>
+  
+          <select name="date" id="">
+            <% for(i=1;i<32;i++){ %>
+              <option value="<%= i %>"><%= i %></option>
+            <% } %>
+          </select>
+          <span>일</span>
+        </fieldset>
+        <br>
+  
+       <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" name="interest" id="travel" value="여행">
+        <label for="travel">여행</label>
+        <input type="checkbox" name="interest" id="fashion" value="패션">
+        <label for="fashion">패션</label>
+        <input type="checkbox" name="interest" id="food" value="음식">
+        <label for="food">음식</label>
+  
+       </fieldset>
+        <br>
+        
+        <fieldset>
+            <legend>선택</legend>
+            <div>
+                <label>좋아하는 색상</label>
+                <input type="color" name="color" />
+            </div>
+            <div>
+                <label>오늘의 행복 지수❤️</label>
+                <input type="range" name="happiness" min="0" max="100" />
+            </div>
+
+            <div>
+                <label>다짐 한마디
+                    <textarea name="comment" cols="30" rows="10"></textarea>
+                </label>
+            </div>
+        </fieldset>
+
+
+        <button>회원가입</button>
+      </form>
+      <a href="/">홈으로 이동</a>
+  </body>
+</html>
