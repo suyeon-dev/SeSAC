@@ -10,6 +10,11 @@ app.set('views', './views');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); // 해석할 모듈 설정
 
+/* 전역 변수 */
+// input pw는 문자열
+const realId = 'banana';
+const realPw = '4321';
+
 /* API */
 app.get('/', (req, res) => {
   res.render('index.ejs');
@@ -58,6 +63,41 @@ app.post('/fetch', (req, res) => {
   res.send(req.body); //{ name: '', gender: '' }
 });
 
+// 외부 API 사용하기
+app.get('/api', (req, res) => {
+  res.render('api');
+});
+
+/* 실습문제 */
+
+app.get('/practice1', (req, res) => {
+  res.render('practice/practice1.ejs');
+});
+app.get('/practice2', (req, res) => {
+  res.render('practice/practice2.ejs');
+});
+
+// /axios-practice1 GET
+app.get('/axios-practice1', (req, res) => {
+  console.log(req.query);
+  res.send(req.query);
+});
+
+// practice2 POST
+// - const realId = "banana";
+// - const realPw = "4321";
+app.post('/practice2', (req, res) => {
+  console.log(req.body); //터미널 { userId: 'santa', userPw: '1234' }
+  // const { userId, userPw } = req.body; //객체 구조분해 할당
+  if (realId === req.body.userId && realPw === req.body.userPw) {
+    res.send({ isSuccess: true, userId: req.body.userId });
+  } else {
+    res.send({ isSuccess: false });
+  }
+  // res.send('응답완료'); // 위에 있는 realId, pw랑 비교해봐야 해서 req.body로 안 받고 문자열로 -> 유효성 검사 후 주석처리(안하면 에러남 ^^...)
+});
+
+// 포트 열기
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
