@@ -11,6 +11,11 @@ app.set('views', './views');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); //해석할 모듈 설정
 
+/* 전역 변수 */
+// input pw는 문자열
+const realId = 'banana';
+const realPw = '4321';
+
 /* API */
 app.get('/', (req, res) => {
   res.render('index.ejs');
@@ -52,6 +57,39 @@ app.get('/fetch', (req, res) => {
 app.post('/fetch', (req, res) => {
   console.log('fetchPost', req.body); //클라이언트가 보낸 데이터 출력
   res.send(req.body); //클라이언트로 데이터를 그대로 응답
+});
+
+// 외부 API 사용하기
+app.get('/api', (req, res) => {
+  res.render('api');
+});
+
+// 실습문제
+app.get('/practice1', (req, res) => {
+  res.render('practice/practice1');
+});
+
+app.get('/practice2', (req, res) => {
+  res.render('practice/practice2');
+});
+
+// 실습1 - axios GET
+app.get('/axios-practice1', (req, res) => {
+  console.log('req.query', req.query);
+  res.send(req.query);
+});
+// 실습2 - POST
+// - const realId = "banana";
+// - const realPw = "4321";
+app.post('/axios-practice2', (req, res) => {
+  console.log('req.body', req.body);
+  const { userId, userPw } = req.body;
+
+  if (realId === userId && realPw === userPw) {
+    res.send({ isSuccess: true, userId: userId });
+  } else {
+    res.send({ isSuccess: false });
+  }
 });
 
 app.listen(PORT, () => {

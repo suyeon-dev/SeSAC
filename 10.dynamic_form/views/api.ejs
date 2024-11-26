@@ -26,8 +26,8 @@
       function changeCatImg() {
         fetch('https://api.thecatapi.com/v1/images/search')
           .then(function (res) {
-            console.log(res);
-            return res.json(); //배열 형태로 응답하니까 json
+            console.log(res); // response 객체(JSON 문자열 형태)
+            return res.json(); //JSON -> JS 객체(또는 배열) 변환
           })
           .then(function (data) {
             console.log(data); // [{id, url, width, height}]
