@@ -114,7 +114,8 @@ app.post(
 /* 5. 동적Form 파일 업로드 */
 //- single 인자는 append에 써준 이름과 동일하게 (input 태그의 name이 아니라)
 app.post('/dynamicUpload', uploadDetail.single('dynamicFile'), (req, res) => {
-  console.log(req.file);
+  console.log('req.file', req.file);
+  console.log('req.body', req.body); //title
   /* {
     fieldname: 'dynamicFile',
     originalname: '2BD37DFE-583A-405D-A988-69DA3F975E1A.JPG',
@@ -126,7 +127,9 @@ app.post('/dynamicUpload', uploadDetail.single('dynamicFile'), (req, res) => {
     size: 23791
     } */
 
-  res.send(req.file); //클라이언트에 보내줘서 res.data에 담김
+  // res.send(req.file); //클라이언트에 보내줘서 res.data에 담김
+  // res.send({ ...req.body, ...req.file });//하나의 객체에 합쳐서 보내는 방법
+  res.send({ file: req.file, fileInfo: req.body });
 });
 
 app.listen(PORT, () => {
