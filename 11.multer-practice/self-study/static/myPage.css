@@ -1,0 +1,33 @@
+.card {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 2rem 0 5rem;
+  max-width: 500px;
+  box-shadow: 0 0 5px #dddd;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.card h1 {
+  margin-bottom: 1rem;
+}
+
+.card h1 span {
+  color: dodgerblue;
+}
+
+.card img {
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px dodgerblue;
+  border-radius: 50%;
+}
+
+.card p {
+  display: flex;
+  margin: 10px 100px;
+  justify-content: space-between;
+}
+
+.card p span {
+  flex-basis: 50%;
+}

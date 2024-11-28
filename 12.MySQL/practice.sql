@@ -62,6 +62,7 @@ select * from user where gender = 'M' order by name desc;
 select id, name from user where birthday between '1990-1-1' and '1999-12-31';
 --4
 select * from user where month(birthday)=6 order by birthday asc;
+select * from user where birthday like '_____06' order by birthday asc;
 -- 5
 select * from user where gender = 'M' and birthday between '1970-1-1' and '1979-12-31';
 -- 6

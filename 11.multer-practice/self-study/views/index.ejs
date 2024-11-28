@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 페이지</title>
+    <style>
+      form label {
+        display: flex;
+      }
+
+      form label span {
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>회원가입</h2>
+    <form
+      action="/register"
+      method="post"
+      name="register"
+      enctype="multipart/form-data"
+    >
+      <label>
+        <span>아이디</span>
+        <input type="text" name="id" />
+      </label>
+      <label>
+        <span>비밀번호</span>
+        <input type="password" name="pw" />
+      </label>
+      <label>
+        <span>이름</span>
+        <input type="text" name="name" />
+      </label>
+      <label>
+        <span>나이</span>
+        <input type="text" name="age" />
+      </label>
+      <label>
+        <span>프로필사진</span>
+        <input type="file" name="profileImg" />
+      </label>
+      <button type="reset">리셋</button>
+      <button>회원가입</button>
+    </form>
+  </body>
+</html>
