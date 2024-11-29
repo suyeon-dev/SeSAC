@@ -132,3 +132,82 @@ from user
 where address like '서울%' 
 order by name ASC 
 limit 3;
+
+
+show databases;
+---update문
+-- UPDATE 테이블 이름
+-- SET 컬럼명="바꿀 데이터"
+
+update user set address="서울특별시 도봉구" where id=1;
+update user set address="제주특별자치도 제주시", name="이지현" where id=2;
+
+--delete문
+/*
+DELETE FROM 테이블 이름
+WHERE 조건
+*/
+delete from user where id>8;
+select * from user;
+
+create table student(
+    id int auto_increment primary key,
+    name varchar(10) not null default '홍길동',
+    hobby varchar(20)
+);
+
+desc student;
+
+insert into student(hobby, name) values('등산', '박상우');
+
+select * from student;
+
+-- having과 group by
+drop table if exists user; --user 테이블 존재할 경우 삭제
+show tables;
+
+--enum: 타입을 강력하게 제어
+create table user(
+    user_id int primary key auto_increment,
+    name varchar(10) not null,
+    specialize enum('축구', '야구', '클라이밍', '배드민턴') not null, 
+    gender enum('남', '여') not null,
+    career_year int not null
+)
+
+desc user;
+
+INSERT INTO user VALUES(NULL, '김판곤', '축구', '남', 40);
+INSERT INTO user VALUES(NULL, '손흥민', '축구', '남',15);
+INSERT INTO user VALUES(NULL, '김자인', '클라이밍', '여',10);
+INSERT INTO user VALUES(NULL, '김동우', '축구', '남',1);
+INSERT INTO user VALUES(NULL, '전유진', '배드민턴', '여',2);
+INSERT INTO user VALUES(NULL, '이대호', '야구', '남',24);
+INSERT INTO user VALUES(NULL, '안세영', '배드민턴', '여',11);
+INSERT INTO user VALUES(NULL, '배서연', '클라이밍', '여',3);
+INSERT INTO user VALUES(NULL, '황희찬', '축구', '남',9);
+INSERT INTO user VALUES(NULL, '지소연', '축구', '여',17);
+INSERT INTO user VALUES(NULL, '이정후', '야구', '남',11);
+INSERT INTO user VALUES(NULL, '김광현', '야구', '남',21);
+
+select * from user;
+
+-- 집계함수 사용해보기
+-- count, sum, avg, min, max
+select count(specialize) from user where specialize="축구"; 
+--specialize 가 축구인 튜플의 개수 (5)
+select sum(career_year) from user; --전체 선수의 경력 합
+select sum(career_year) from user where specialize="축구"; --전체 선수의 경력 합
+select avg(career_year) from user where specialize="축구"; --축구 선수의 경력 평균
+select min(career_year) from user where specialize="축구"; --축구선수 중 경력이 가장 적은 사람
+select max(career_year) from user where specialize="축구" ;--축구선수 중 경력이 가장 많은 사람
+
+-- group by (같은 그룹끼리 묶어서 조회)
+select specialize from user group by specialize; --축구, 클라이밍, 배드민턴, 야구
+select specialize, count(specialize) from user group by specialize;--축구5, 클라이밍2, 배드민턴2, 야구3
+
+--having
+select specialize, count(specialize) 
+from user 
+where gender='여' group by specialize 
+having count(specialize)>=2; --having: group화 된 테이블에 조건을 다는 것

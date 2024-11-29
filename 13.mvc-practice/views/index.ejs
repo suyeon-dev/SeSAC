@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 동적폼 로그인 실습문제 MVC 패턴으로 변경해보기 -->
+    <title>MVC 실습 1</title>
+    <!-- Axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      .success {
+        color: blue;
+        font-size: 1.2rem;
+      }
+
+      .error {
+        color: red;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="login">
+      <h1>MVC패턴 동적폼 로그인</h1>
+      <label for="id">
+        <span>아이디</span>
+        <input type="text" name="id" />
+      </label>
+      <br />
+      <label for="pw">
+        <span>비밀번호</span>
+        <input type="password" name="pw" />
+      </label>
+      <br />
+      <button type="button" onclick="clickLogin()">로그인</button>
+    </form>
+    <div class="login-result"></div>
+  </body>
+  <script defer>
+    function clickLogin() {
+      const form = document.forms['login'];
+      const loginResult = document.querySelector('.login-result');
+      const data = {
+        userId: form.id.value,
+        userPw: form.pw.value,
+      };
+      console.log('data', data);
+
+      // 유효성 검증
+      if (!form.id.value || !form.pw.value) {
+        loginResult.textContent = '아이디와 비밀번호를 입력해주세요';
+        loginResult.classList.add('error');
+        loginResult.classList.remove('success');
+        return;
+      }
+
+      //axios 요청
+      axios({
+        url: '/login',
+        method: 'post',
+        data: data,
+      })
+        .then((res) => {
+          if (res.data.isSuccess) {
+            loginResult.textContent = `${res.data.userId}님 로그인 성공~!😊`;
+            loginResult.classList.add('success');
+            loginResult.classList.remove('error');
+          } else {
+            loginResult.textContent = `아이디 또는 패스워드 오류입니다🥺`;
+            loginResult.classList.add('error');
+            loginResult.classList.remove('success');
+          }
+        })
+        .catch((err) => {
+          console.error('Error:', err);
+          loginResult.textContent = '🚨 로그인 요청 중 문제 발생 🚨';
+          loginResult.classList.add('error');
+        });
+    }
+  </script>
+</html>
