@@ -1,4 +1,4 @@
-const Comment = require('../model/Comment');
+const Comment = require('../model/Comment'); //데이터 불러와
 
 // GET /
 exports.main = (req, res) => {
@@ -6,15 +6,12 @@ exports.main = (req, res) => {
 };
 
 // GET / comments
-// - 함수이름 comments
 exports.comments = (req, res) => {
   console.log(Comment.commentInfos());
   res.render('comments', { commentInfos: Comment.commentInfos() });
 };
 
 // GET / comment/:id
-// - 함수이름 commnet
-// - 가능하면 comments는 전역변수 아니라 지역변수로 선언
 exports.comment = (req, res) => {
   const comments = Comment.commentInfos();
   console.log('req.params', req.params); //{ id: '1' }

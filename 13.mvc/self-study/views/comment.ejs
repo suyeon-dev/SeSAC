@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>댓글</title>
+  </head>
+  <body>
+    <h1><%=commentInfo.userid %>님의 댓글</h1>
+    <a href="/comments">댓글 목록 보기</a>
+    <p><span>작성일 : </span> <%=commentInfo.date %></p>
+    <p><span>댓글 내용 : </span> <%=commentInfo.comment %></p>
+  </body>
+</html>
+
+<!-- 댓글 정보: { id: 1, userid: 'bebe', date: '2024-12-01', comment: '공부가 절 때렸어요' } -->

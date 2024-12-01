@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>댓글 모음</title>
+  </head>
+  <body>
+    <h1>댓글 모음 💬</h1>
+    <a href="/">홈으로 이동</a>
+   <ul>
+    <% for(let i=0; i<commentInfo.length;i++ ){ %>
+        <!-- <li> <%=commentInfo[i].id %></li> -->
+         <li> 
+            <b><%=commentInfo[i].userid%> </b>
+            <a href="./comment/<%=commentInfo[i].id%>"><%= commentInfo[i].comment%></a>
+        </li>
+     <% } %>
+   </ul>
+  </body>
+</html>
+
+<!-- commentIfno:
+    [
+        { id: 1, userid: 'bebe', date: '2024-12-01', comment: '공부가 절 때렸어요' },
+        { id: 2, userid: 'santa', date: '2024-11-30', comment: '호호호호' },
+        { id: 3, userid: 'rudolph', date: '2024-12-02', comment: '징글벨 징글벨' },
+        { id: 4, userid: 'johnDoe', date: '2024-12-24', comment: '울면 안 돼' }
+    ]  -->
