@@ -15,11 +15,13 @@ exports.getVisitors = (cb) => {
     }
     console.log('데이터베이스에 성공적으로 연결되었습니다.');
   });
-  // 쿼리 예시
+  // conn.query 비동기로 DB에서 데이터 조회
   conn.query('SELECT * FROM visitor', (err, rows) => {
+    // 쿼리 실행 중 에러 발생하면 중단
     if (err) throw err;
-    console.log('쿼리 결과:', rows);
-    cb(rows);
+    // 쿼리 결과 Visitor.js : //[{id: , name: , comment: }, {}, ..]
+    console.log('쿼리 결과 Visitor.js:', rows);
+    cb(rows); //결과 데이터를 Cvisitor.js 컨트롤러로 전달
   });
 };
 

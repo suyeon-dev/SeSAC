@@ -32,7 +32,9 @@ create user 'suyeon'@'%' IDENTIFIED by '1125';
 grant all PRIVILEGES on *.* to 'suyeon'@'%' with grant option;
 
 -- alter user 'suyeon'@'%' IDENTIFIED with mysql_native_password by '1125';
+-- MySQL 비밀번호 변경
 ALTER USER 'suyeon'@'%' IDENTIFIED WITH caching_sha2_password BY '1125';
+-- 현재 사용 중인 MySQL 캐시를 지우고 새로운 설정 적용
 FLUSH PRIVILEGES;
 
 select * from mysql.user;
