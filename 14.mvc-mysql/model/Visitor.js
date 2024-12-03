@@ -6,7 +6,6 @@ const conn = mysql.createConnection({
   database: 'sesac',
 });
 
-//cb = () => {}
 exports.getVisitors = (cb) => {
   // 연결 테스트
   conn.connect((err) => {
