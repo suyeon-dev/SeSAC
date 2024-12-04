@@ -1,0 +1,15 @@
+//rest client 확장프로그램 사용을 위한 http 확장자 파일
+
+//요청할 주소
+@server=http://localhost:8080
+
+GET {{server}}/
+
+### post 요청
+POST {{server}}/test
+Content-Type: application/json; charset=UTF-8
+
+
+{
+    "name":"수연"
+}
