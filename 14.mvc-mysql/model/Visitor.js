@@ -6,7 +6,7 @@ const conn = mysql.createConnection({
   database: 'sesac',
 });
 
-//1. 전체 목록 "조회"
+//1. 전체 목록 "조회" - select
 exports.getVisitors = (cb) => {
   // 연결 테스트
   conn.connect((err) => {
@@ -22,18 +22,20 @@ exports.getVisitors = (cb) => {
     if (err) throw err;
     // 쿼리 결과 Visitor.js : //[{id: , name: , comment: }, {}, ..]
     console.log('쿼리 결과 Visitor.js:', rows);
-    cb(rows); //결과 데이터를 Cvisitor.js 컨트롤러로 전달
+    cb(rows); //결과 데이터를 Cvisitor.js 컨트롤러로 전달 (배열 형태)
   });
 };
 
-// 2. 특정 데이터 조회
+// 2. 특정 데이터 조회 - select문
+// 컨트롤러에서 cb와 함께 id 넘겨줌
 exports.getVisitor = (id, cb) => {
   conn.query(`SELECT * FROM visitor WHERE id=${id}`, (err, rows) => {
     if (err) {
       throw err;
     }
-    console.log('visitor 테이블 한 개 조회', rows);
-    cb(rows[0]);
+    // Model 테이블 한 개 조회 [ { id: 19, name: '산타', comment: '호호호호!' } ]
+    console.log('Model 테이블 한 개 조회', rows);
+    cb(rows[0]); //객체 형태
   });
 };
 

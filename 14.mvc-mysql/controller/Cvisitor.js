@@ -6,7 +6,7 @@ exports.main = (req, res) => {
   res.render('index');
 };
 
-/* GET /visitors => localhost:PORT/visitors */
+/* 1. GET /visitors => localhost:PORT/visitors */
 exports.getVisitors = (req, res) => {
   /* [DB 연결 전] */
   // res.render('visitors', { data: Visitor.getVisitors() });
@@ -17,26 +17,27 @@ exports.getVisitors = (req, res) => {
   // -- model.Visitor의 결과물 cb(rows) = 인자 result(배열 형태)
   Visitor.getVisitors((result) => {
     // 전체목록 Cvisitor.js : [{id: , name: , comment: }, ...]
-    console.log('전체목록 Cvisitor.js', result);
+    console.log('전체목록 Cvisitor.js', result); //모델의 select문의 결과
     // 콜백함수: 데이터를 visitors라는 Ejs템플릿에 전달해서 렌더링
     res.render('visitors', { data: result });
   });
 };
 
-/* GET /visitor/:id */
-// - params, query 두가지 방법으로 받을 수 있음
+/* 2. GET /visitor/:id */
+// - params, query 두가지 방법으로 받을 수 있음 -> params
 exports.getVisitor = (req, res) => {
-  console.log(req.params); //{id: '1'}
-  console.log(req.params.id); //1
+  console.log('req.params', req.params); //{id: '1'}
+  console.log(req.params.id); //1 -> req.params.id를 사용해 URL에서 전달받은 id 값을 가져옴
 
   Visitor.getVisitor(req.params.id, (result) => {
-    console.log('1개의 데이터 Cvisitor.js', result); //cb(rows)배열 형태 -> cb(rows[0])객체형태
+    //Cvisitor 1개의 데이터 { id: 19, name: '산타', comment: '호호호호!' }
+    console.log('Cvisitor 1개의 데이터', result);
     res.send(result); //콜백 안에서 응답하기
   });
   // res.send('response');
 };
 
-/* POST /visitor, 등록 */
+/* 3. POST /visitor, 등록 */
 exports.postVisitor = (req, res) => {
   console.log('req.body', req.body);
   Visitor.postVisitor(req.body, (result) => {
@@ -45,7 +46,7 @@ exports.postVisitor = (req, res) => {
   });
 };
 
-/* DELETE /visitor, 삭제 */
+/* 4. DELETE /visitor, 삭제 */
 exports.deleteVisitor = (req, res) => {
   console.log('Cvisitor req.body', req.body); //{ id: '4' }
   console.log('Cvisitor req.body.id', req.body.id); //4
@@ -55,7 +56,7 @@ exports.deleteVisitor = (req, res) => {
   });
   // res.send('response!');
 };
-/* PATCH /visitor, 수정 */
+/* 5. PATCH /visitor, 수정 */
 exports.patchVisitor = (req, res) => {
   console.log('req.body', req.body);
   // res.send('response patch!');

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('include/include', { title: '회원가입' })%>
+  <body>
+    <h1>회원가입</h1>
+    <form name="form_register">
+      <label for="userid">ID</label>
+      <input id="userid" type="text" name="userid" required /><br />
+      <label for="password">Password</label>
+      <input id="password" type="password" name="pw" required /><br />
+      <label for="nickname">Name </label>
+      <input id="nickname" type="text" name="name" required /><br />
+      <button type="button" onclick="createUser();">Register</button>
+    </form>
+    <!-- TODO: href 속성값 설정하기 -->
+    <a href="/user/signin">Login</a>
+
+    <script>
+      // TODO: [Register] 버튼 클릭시 서버에 회원가입 요청하기
+      // 1. POST /user/signup
+      const form = document.forms['form_register'];
+      function createUser() {
+        console.log(form.userid);
+
+        if (
+          !form.userid.checkValidity() ||
+          !form.pw.checkValidity() ||
+          !form.name.checkValidity()
+        ) {
+          alert('아이디, 비밀번호, 이름을 모두 입력해주세요');
+          return;
+        }
+
+        axios({
+          method: 'post',
+          url: '/user/signup',
+          data: {
+            id: form.userid.value,
+            pw: form.pw.value,
+            name: form.name.value,
+          },
+        })
+          .then((res) => {
+            console.log('then data', data);
+            console.log('res.data', res.data); //{id: '2', pw: '2', name: '2'}
+            const { id, pw, name, isSuccess } = res.data;
+
+            if (res.data.isSuccess) {
+              console.log('회원가입 성공! ID: ', `${res.data.id}`);
+              // 회원 가입 성공 시 로그인 페이지로 이동
+              document.location.href = '/user/signin';
+            } else {
+              alert('회원가입 실패');
+            }
+          })
+          .catch((err) => {
+            console.error('회원가입 중 문제발생', err);
+          });
+      }
+    </script>
+  </body>
+</html>
