@@ -12,6 +12,7 @@ exports.getSignup = (req, res) => {
   res.render('signup');
 };
 
+/* Model에게 DB 정보 요청 */
 // 1. POST /user/signup, 새로운 회원 생성
 exports.postSignup = (req, res) => {
   console.log('Cuser req.body', req.body); // 서버{ id: '2', pw: '2', name: '2' }

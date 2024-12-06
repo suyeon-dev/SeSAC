@@ -18,6 +18,7 @@ router.get('/signin', controller.getSignin);
 router.post('/signup', controller.postSignup);
 
 // POST /user/siginin : 로그인 회원 조회
+// 로그인1. 로그인 가능한 계정인지 비교
 
 // POST /user/profile : 로그인 성공 시 회원정보 수정 페이지 접속
 
