@@ -7,52 +7,46 @@ exports.main = (req, res) => {
   //   res.send('응답!');
 };
 
-// GET /user/signup, 회원가입 페이지
+// GET /user/signup
 exports.getSignup = (req, res) => {
   res.render('signup');
+};
+
+// GET /user/signin
+exports.getSignin = (req, res) => {
+  res.render('signin');
 };
 
 /* Model에게 DB 정보 요청 */
 // 1. POST /user/signup, 새로운 회원 생성
 exports.postSignup = (req, res) => {
+  // req.body : 클라이언트가 보낸 데이터를 받음
   console.log('Cuser req.body', req.body); // 서버{ id: '2', pw: '2', name: '2' }
 
-  User.postSignup(req.body, (result) => {
-    console.log('DB 저장 결과:', result);
-    if (result) {
-      // 클라에 데이터 보낼 때 isSuccess 포함
-      res.send({
-        isSuccess: true,
-        id: req.body.id,
-      });
+  // 모델로 데이터 전달 & DB 작업 수행
+  User.postSignup(req.body, () => {
+    // 모델 작업 완료 시 실행할 함수
+    res.end();
+    //   res.send('응답!!'); //데이터를 클라이언트로 보냄
+  });
+};
+
+// 2. POST /user/signin/:id, 로그인 회원 조회
+// 2-1. 로그인 가능한 계정인지 조회
+exports.postSignin = (req, res) => {
+  console.log(req.body); // 클라이언트가 보낸 데이터 확인
+
+  // 모델로 데이터 전달
+  User.postSignin(req.body, (result) => {
+    console.log('모델에서 받은 로그인 결과:', result);
+
+    if (result.length > 0) {
+      res.send({ isLogin: true, userInfo: result[0] });
     } else {
-      res.send({ isSuccess: false });
+      res.send({ isLogin: false });
+      // 프론트에서 데이터 확인할 때 res.data가 아니라 res.data.isLogin 확인
     }
   });
-  //   res.send('응답!!');
-};
-
-// 2. GET /user/signin, 로그인 페이지 보여주기
-exports.getSignin = (req, res) => {
-  console.log('로그인 req.params', req.params);
-
-  User.getSignin((result) => {
-    console.log('Cuser result', result);
-  });
-
-  res.send('로그인 페이지 응답!');
-};
-
-// 3. POST /user/signin/:id, 로그인 회원 조회
-exports.postSignin = (req, res) => {
-  console.log('req.params', req.params);
-  console.log(req.params.id);
-
-  User.postSignin(req.params.id, (result) => {
-    console.log('Cuser 1개의 데이터', result);
-    // res.send(result)
-  });
-  res.send('로그인 회원 조회 응답!');
 };
 
 // POST /user/profile, 로그인 성공 시 회원정보 수정 페이지 접속

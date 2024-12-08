@@ -14,16 +14,18 @@ router.get('/signin', controller.getSignin);
 
 // ------ POST
 
-// POST /user/signup : 새로운 회원 생성
+// 1. POST /user/signup : 새로운 회원 생성
 router.post('/signup', controller.postSignup);
 
-// POST /user/siginin : 로그인 회원 조회
-// 로그인1. 로그인 가능한 계정인지 비교
+// 2-1. POST /user/siginin : 로그인 가능한 계정인지 조회
+router.post('/signin', controller.postSignin);
 
-// POST /user/profile : 로그인 성공 시 회원정보 수정 페이지 접속
+// 2-2. POST /user/profile : 로그인 성공 시 회원정보 수정 페이지 접속
+// router.post('/signin', controller.postProfile);
 
-// PATCH /user/profile/eidt : 회원정보 수정
+// 3. PATCH /user/profile/eidt : 회원정보 수정
 
-// DELETE /user/profile/delete : 회원 삭제
+// 4. POST /user/profile/delete : 회원 삭제 (탈퇴 요청)
+// - DELETE도 사용 가능. body 정보로 넘어오기 때문에 POST도 가능
 
 module.exports = router;
