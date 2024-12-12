@@ -96,8 +96,25 @@ exports.postVisitor = (req, res) => {
     comment: req.body.comment,
   })
     .then((result) => {
-      console.log(result);
-      res.send(result);
+      console.log('postVisitor:', result);
+      res.send(result); //객체 형태
+      /* visitor {
+        dataValues: { id: 29, name: '댕댕', comment: '멍' },
+        _previousDataValues: { name: '댕댕', comment: '멍', id: 29 },
+        uniqno: 1,
+        _changed: Set(0) {},
+        _options: {
+          isNewRecord: true,
+          _schema: null,
+          _schemaDelimiter: '',
+          attributes: undefined,
+          include: undefined,
+          raw: undefined,
+          silent: undefined
+        },
+        isNewRecord: false
+      }
+      */
     })
     .catch((err) => {
       console.log('err: ', err);
@@ -124,7 +141,8 @@ exports.deleteVisitor = async (req, res) => {
     const result = await models.Visitor.destroy({
       where: { id: req.body.id },
     });
-    //1(삭제 성공)->true, 0(삭제 실패=없는 데이터 삭제 시도)->false
+    //1(삭제 성공)=true, 0(삭제 실패=없는 데이터 삭제 시도)=false
+    //POSTMAN으로 확인해보기~!
     console.log('result:', result);
 
     // 형변환 (number to boolean)
@@ -134,8 +152,9 @@ exports.deleteVisitor = async (req, res) => {
       res.send('잘못된 접근입니다!');
     }
   } catch (err) {
-    console.log('err', err);
-    res.send('internal server error');
+    // console.log('err', err);
+    // res.send('internal server error');
+    errorlogs(res, err);
   }
 };
 
@@ -154,6 +173,7 @@ exports.patchVisitor = async (req, res) => {
   // UPDATE visitor SET name="${req.body.name}", comment="${req.body.comment}"
   // WHERE id=${data.id}
   try {
+    // 선언할 때부터 배열의 구조 분해 -> 결과: 1 또는 0
     const [result] = await models.Visitor.update(
       {
         name: req.body.name,
@@ -165,17 +185,18 @@ exports.patchVisitor = async (req, res) => {
         },
       }
     );
-    //[1], [0] 수정 실패
-    console.log('result:', result); // [1], [0]
-    // const [number] = result[0]; //배열의 구조분해
+    //[1] 수정 성공, [0] 수정 실패
+    console.log('result:', result); // [1] 또는 [0]
+    // const [number] = result[0];//배열의 구조분해
     // console.log(number);
 
     if (Boolean(result)) {
       res.send('수정 완료');
     } else {
-      res.send('잘못된 접근입니다.');
+      res.send('잘못된 접근입니다.'); //없는 데이터 수정 요청
     }
   } catch (err) {
+    // 에러 함수화 -> utils 폴더에서 관리
     // errorlogs(err, 'patch controller 내부', '수정 에러가 났어요', 500);
     errorlogs(err, 'patch controller 내부');
   }

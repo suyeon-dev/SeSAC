@@ -1,4 +1,5 @@
-// jsdocs (/** )
+// jsdocs (/** + [enter]키)
+// - 내가 만든 함수에 대한 설명
 /**
  * 서버 에러가 났을 때 실행될 코드 모음
  * @param {Response} res 실제 에러 전달
@@ -18,3 +19,5 @@ exports.errorlogs = (
   console.log(errMsgInServer, err);
   res.status(statusCode).send(errMsgInClient);
 };
+
+// 매개변수로 기본값 전달 (예: statusCode)

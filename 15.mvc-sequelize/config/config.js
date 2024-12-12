@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-/*
+/* config.json 참고
 {
   "development": {
     "username": "suyeon",
