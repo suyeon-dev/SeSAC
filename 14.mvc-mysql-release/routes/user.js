@@ -21,11 +21,13 @@ router.post('/signup', controller.postSignup);
 router.post('/signin', controller.postSignin);
 
 // 2-2. POST /user/profile : 로그인 성공 시 회원정보 수정 페이지 접속
-// router.post('/signin', controller.postProfile);
+router.post('/profile', controller.postProfile);
 
 // 3. PATCH /user/profile/eidt : 회원정보 수정
+router.patch('/profile/edit', controller.editProfile);
 
 // 4. POST /user/profile/delete : 회원 삭제 (탈퇴 요청)
-// - DELETE도 사용 가능. body 정보로 넘어오기 때문에 POST도 가능
+// - DELETE도 사용 가능. body 정보로 넘어오기 때문에 patch, post도 가능
+router.delete('/profile/delete', controller.deleteProfile);
 
 module.exports = router;

@@ -30,13 +30,14 @@
     <script>
       // TODO: [Login] 버튼 클릭시 서버에 로그인 요청하기
       // POST /user/signin
-      const form = document.forms['form_info'];
+
       function login() {
-        console.log('form:', form);
-        console.log(form.userid); //<input type="hidden" name="userid">
+        const infoForm = document.forms['form_info'];
+        const loginForm = document.forms['form_login'];
+
         //유효성 검사
-        if (!form.checkValidity()) {
-          form.reportValidity();
+        if (!loginForm.checkValidity()) {
+          loginForm.reportValidity();
           return;
         }
 
@@ -44,11 +45,28 @@
           method: 'post',
           url: '/user/signin',
           data: {
-            userid: form.userid.value,
-            pw: form.pw.value,
+            // 로그인 버튼 눌렀을 때, 모델 데이터와 비교하기 위해 보내주는 정보
+            userid: loginForm.userid.value,
+            pw: loginForm.pw.value,
           },
         })
-          .then((res) => {})
+          .then((res) => {
+            // signin {data: {…}, status: 200, statusText: 'OK', headers: r, config: {…}, …}
+            console.log('signin', res);
+            const { data } = res;
+            console.log(data); //{isLogin: true, userInfo: {…}}
+
+            if (data.isLogin) {
+              alert('로그인 성공!');
+              // hidden form인 infoForm에 userid 채우기
+              infoForm.userid.value = loginForm.userid.value;
+              // 제출 (POST /user/profile)
+              infoForm.submit(); //infoForm 제출
+            } else {
+              alert('로그인 실패');
+              loginForm.reset(); //infoForm 초기화(제출 안함)
+            }
+          })
           .catch((err) => {
             console.error('로그인 중 문제발생:', err);
           });

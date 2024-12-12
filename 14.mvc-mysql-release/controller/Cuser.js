@@ -31,14 +31,16 @@ exports.postSignup = (req, res) => {
   });
 };
 
-// 2. POST /user/signin/:id, 로그인 회원 조회
-// 2-1. 로그인 가능한 계정인지 조회
+// 2. POST /user/signin
+// 로그인1 로그인 가능한 계정인지 조회
 exports.postSignin = (req, res) => {
-  console.log(req.body); // 클라이언트가 보낸 데이터 확인
+  console.log('postSignin', req.body); // { userid: 'marsh', pw: '1125' }
 
   // 모델로 데이터 전달
   User.postSignin(req.body, (result) => {
+    //모델 결과 [ { id: 21, userid: 'marsh', name: '마쉬멜로우', pw: '1125' } ]
     console.log('모델에서 받은 로그인 결과:', result);
+    console.log(result.length);
 
     if (result.length > 0) {
       res.send({ isLogin: true, userInfo: result[0] });
@@ -49,8 +51,33 @@ exports.postSignin = (req, res) => {
   });
 };
 
-// POST /user/profile, 로그인 성공 시 회원정보 수정 페이지 접속
+// POST /user/profile
+// 로그인2(로그인 성공) 회원정보 수정 페이지 접속
+exports.postProfile = (req, res) => {
+  console.log('postProfile', req.body); //{userid: 'marsh'}
+
+  User.postProfile(req.body.userid, (result) => {
+    //postSignin에서 userid 테이블이 있을 때만 /user/profile에 POST 요청 보내기 때문에
+    //userid가 넘어 오는 지 아닌 확인 안 해도 됨
+    res.render('profile', { data: result[0] });
+  });
+};
 
 // PATCH /user/profile/edit, 회원정보 수정
+exports.editProfile = (req, res) => {
+  //console { id: '21', name: '마쉬멜로우', pw: '1125' }
+  console.log('Controller editProfile', req.body); //profile.ejs 클라이언트 입력
+  User.editProfile(req.body, () => {
+    // res.send('회원정보 수정 성공');
+    res.end();
+  });
+};
 
 // DELETE /user/profile/delete, 회원 삭제
+exports.deleteProfile = (req, res) => {
+  console.log('controller deleteProfile', req.body);
+
+  User.deleteProfile(req.body.id, () => {
+    res.send('컨트롤러 회원 삭제 응답');
+  });
+};
