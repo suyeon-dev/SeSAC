@@ -207,7 +207,7 @@ exports.getTeamPlayers = async (req, res) => {
     //(2) 특정 팀의 정보와 해당 팀의 선수까지 확인 > join (Team, Player)
     const teamPlayers = await Team.findOne({
       where: { team_id: teamId }, //기본키 기준
-      include: [{ model: Player }],
+      include: [{ model: Player }], // JOIN: 해당 팀의 선수 정보도 가져옴
     });
     res.send(teamPlayers); // 배열로 반환
   } catch (err) {
