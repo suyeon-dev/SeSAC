@@ -8,6 +8,7 @@ router.get('/players', controller.getAllPlayers);
 router.get('/players/:playerId', controller.getPlayer);
 
 router.post('/players', controller.postPlayer);
+//params 중간에도 올 수 있음
 router.patch('/players/:playerId/team', controller.patchPlayer);
 router.delete('/players/:playerId', controller.deletePlayer);
 

@@ -13,7 +13,7 @@ const TeamModel = (sequelize, DataTypes) => {
       },
     },
     {
-      freezeTableName: true,
+      freezeTableName: true, //테이블 이름 단수형 그대로 유지
     }
   );
   return team;

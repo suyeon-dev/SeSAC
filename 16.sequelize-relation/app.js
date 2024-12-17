@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const PORT = 8080;
-const { sequelize } = require('./models');
+const { sequelize } = require('./models'); //db 중 sequelize 키(sync 포함)만 사용
+// 아래 두 줄과 위가 동일함
 // db={sequelize:~~, Sequelize: ~~};
 // const {sequelize} = db;
 

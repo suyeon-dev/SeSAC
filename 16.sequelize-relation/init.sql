@@ -55,3 +55,13 @@ select * from profile;
 select * from team;
 select * from game;
 select * from teamgame;
+
+###삭제 시 관계 설정 고려해야함
+#player에 속한 Profile 먼저 삭제
+drop table profile;
+drop table player;
+
+#중계테이블 먼저!
+drop table teamgame;
+drop table game;
+drop table team

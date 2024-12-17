@@ -1,19 +1,20 @@
 
 ### 변수 정의
 @server = http://localhost:8080
-@playerId=2
+@playerId=5
 @teamId=2
 
-### 전체 선수 조회
+### 1. 전체 선수 조회
 GET {{server}}/players
 
-### 하나의 선수 조회
+### 2. 하나의 선수 조회
 GET {{server}}/players/{{playerId}}
 
-### 선수 추가
+### 3. 선수 추가
+#param, query가 아니라 post 요청의 body에 담아 보냄(URL작성 필요x) 
 POST {{server}}/players
 Content-Type: application/json; charset=UTF-8
-# 데이터 전송할 때는 JSON 형태로!
+# 데이터 응답은 객체 형태지만, 전송할 때는 JSON 형태로!
 
 {
     "name": "손흥민",
@@ -21,34 +22,37 @@ Content-Type: application/json; charset=UTF-8
     "teamid":1
 }
 
-### 특정 선수의 소속 팀 변경
+### 4. 특정 선수의 소속 팀 변경
+#teamId는 body에, playerId는 params에 담아 전송
 PATCH {{server}}/players/{{playerId}}/team
 Content-Type: application/json; charset=UTF-8
 
-#json형태 body
+#json형태 body에 teamId를 담아서 전송
 {
     "teamId":1
 }
 
-### 특정 선수 삭제
+### 5. 특정 선수 삭제
 DELETE {{server}}/players/{{playerId}}
 
 
-#### 복잡한 where 조건 사용 (Cmain) ####
-### 1. 전체 팀 조회
+#### 6.복잡한 where 조건 사용 (Cmain) ####
+#get 요청에 sort, search 같은 쿼리 파라미터를 사용해 다양한 조건으로 팀 조회 가능
+
+### 6-1. 전체 팀 조회
 GET {{server}}/teams
 
-### 2. 전체 팀 조회 (이름순 정렬)
+### 6-1. 전체 팀 조회 (이름순 정렬)
 GET {{server}}/teams?sort=name_asc
 
-### 3. 이름으로 팀 검색
+### 6-1. 이름으로 팀 검색
 GET {{server}}/teams?search=K
 
-### 3. 이름으로 팀 검색(정보 없음)
+### 6-1. 이름으로 팀 검색(정보 없음)
 GET {{server}}/teams?search=KT111
 
-### 4. 특정 팀 조회
+### 6-2. 특정 팀 조회
 GET {{server}}/teams/{{teamId}}
 
-### 5. 특정 팀의 모든 선수 조회
+### 6-3. 특정 팀의 모든 선수 조회
 GET {{server}}/teams/{{teamId}}/players
