@@ -93,6 +93,7 @@
       // popup이라는 곳에 쿠키 데이터 담아서 보낸 후 확인해보기
       const popup = '<%= popup %>';
       console.log('popup:', popup);
+      console.log(typeof '<%= popup %>'); //항상 string
 
       // [2] TODO: popup 쿠키 값이 ''이라면, 모달 보여주기 (쿠키가 설정되지 않았다면)
       if (popup === '') myModal.show();

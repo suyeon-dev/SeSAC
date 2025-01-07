@@ -24,7 +24,7 @@ exports.getVisitors = (req, res) => {
 };
 
 /* 2. GET /visitor/:id */
-// - params, query 두가지 방법으로 받을 수 있음 -> params
+// - get 요청은 params, query 두가지 방법으로 받을 수 있음 -> params
 exports.getVisitor = (req, res) => {
   console.log('req.params', req.params); //{id: '1'}
   console.log(req.params.id); //1 -> req.params.id를 사용해 URL에서 전달받은 id 값을 가져옴
@@ -47,6 +47,7 @@ exports.postVisitor = (req, res) => {
 };
 
 /* 4. DELETE /visitor, 삭제 */
+// - delete 요청은 query, params, body 전달 모두 가능
 exports.deleteVisitor = (req, res) => {
   console.log('Cvisitor req.body', req.body); //{ id: '4' }
   console.log('Cvisitor req.body.id', req.body.id); //4
