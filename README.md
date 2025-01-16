@@ -1,15 +1,19 @@
 # SeSAC
 
 ## Seoul Software Academy
+
 SeSAC(서울시 청년취업사관학교 x 서울경제진흥원)
+
 - 과정명 | SeSAC x 코딩온 풀스택 웹개발자 취업 부트캠프 2기
 - 교육기간 | 2024-10-23 ~ 2025-04-28 (762시간)
 
 ## 내용
+
 - 강의 노트 및 실습
 - 과제
 
 ## 목차
+
 ### HTML & CSS
 
 - 01.html
@@ -43,4 +47,9 @@ SeSAC(서울시 청년취업사관학교 x 서울경제진흥원)
 총정리 비밀번호 암호화 과제
 
 ### React
+
 - 20.react-start: 클래스형(ClassComponent), 함수형(UseJSX), 과제(Practice)
+- 21.props-state:
+- 22.ref-lifecycle: useRef, useEffect
+- 23.react-style: CSS module, Styled-components, SASS
+- 24.react-hooks: useMemo, useCallback, useReducer, useContext
