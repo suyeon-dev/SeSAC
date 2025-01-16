@@ -1,0 +1,74 @@
+// 변수 style/ _util.scss (분리)
+$color-primary: #77a4ff;
+$color-secondary: #f4f8ff;
+$color-gray: gray;
+$boxShadow: 2px 2px 6px rgb(137, 136, 136);
+
+// reset css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// RealPost
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header {
+  background-color: $color-primary;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    color: white;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  gap: 2rem;
+}
+
+.post {
+  background-color: $color-secondary;
+  border-radius: 10px;
+  box-shadow: $boxShadow;
+  width: 60%;
+  padding: 10px 20px;
+
+  .postHeader {
+    padding: 10px;
+
+    .span {
+      font-size: 1rem;
+      &.postId {
+        color: $color-primary;
+        font-weight: bold;
+      }
+      &.postTitle {
+        color: $color-gray;
+      }
+    }
+  }
+
+  p {
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 767px) {
+  .post {
+    width: 90vw;
+  }
+}

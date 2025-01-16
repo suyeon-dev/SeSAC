@@ -35,7 +35,7 @@ export default function InputContainer() {
         value={color}
         onChange={(e) => {
           setColor(e.target.value);
-          console.log('여기는 Input', e.target.value);
+          // console.log('여기는 Input', e.target.value);
         }}
       />
       <button onClick={changeColor}>색 적용</button>

@@ -22,8 +22,8 @@ export default function NumberQuiz() {
 
   const createQuiz = () => {
     setNums({
-      x: Math.floor(Math.random() * 10),
-      y: Math.floor(Math.random() * 10),
+      x: Math.floor(Math.random() * 11),
+      y: Math.floor(Math.random() * 11),
     });
     setOp(getRandomOp);
     setInput('');
@@ -64,8 +64,8 @@ export default function NumberQuiz() {
     } else alert(`오답🥲 정답은 ${answer}입니다`);
 
     setNums({
-      x: Math.floor(Math.random() * 10),
-      y: Math.floor(Math.random() * 10),
+      x: Math.floor(Math.random() * 11),
+      y: Math.floor(Math.random() * 11),
     });
 
     createQuiz();
@@ -80,7 +80,6 @@ export default function NumberQuiz() {
         type='number'
         value={input}
         ref={inputRef}
-        value={input}
         onChange={(e) => {
           setInput(e.target.value);
         }}

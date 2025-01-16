@@ -10,7 +10,9 @@
 // import RealPost from './components/practice/RealPost';
 // import Guestbook from './components/practice/Guestbook';
 // import InputContainer from './components/practice/InputContainer';
-import NumberQuiz from './components/practice/NumberQuiz';
+// import NumberQuiz from './components/practice/NumberQuiz';
+
+import RealPostSass from './components/practice/RealPostSass';
 
 function App() {
   return (
@@ -42,7 +44,10 @@ function App() {
       {/* ref 과제 */}
       {/* <Guestbook /> */}
       {/* <InputContainer /> */}
-      <NumberQuiz />
+      {/* <NumberQuiz /> */}
+
+      {/* 과제 RealPost에 Sass 적용하기 */}
+      <RealPostSass />
     </div>
   );
 }
