@@ -1,0 +1,181 @@
+@import 'util';
+
+h4 {
+  color: gray;
+}
+
+// nesting 기능 + 변수 사용
+.div1 {
+  width: 200px;
+  height: 200px;
+  background-color: $color-red;
+  > .div2 {
+    width: 50%;
+    height: 50%;
+    background-color: $color-orange;
+    .div3 {
+      width: 50%;
+      height: 50%;
+      background-color: $color-yellow;
+    }
+  }
+
+  .btn {
+    // .btn 클래스 공통 속성
+    display: inline-block;
+    transition: 0.4s;
+    width: 33%;
+    height: 40px;
+    color: white;
+    line-height: 40px;
+    text-align: center;
+    font-size: 10px;
+
+    // .btn.orangered
+    &.orangered {
+      background-color: orangered;
+    }
+
+    // .btn--opacity
+    &--opacity {
+      background-color: $color-blue;
+      opacity: 0.5;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    // .btn--blue
+    // Scss에서는 하이픈, 언더바를 구분하지 않아서 $color_blue도 가능
+    &--blue {
+      background-color: $color-blue;
+    }
+
+    &:hover {
+      cursor: pointer;
+      font-weight: 700;
+    }
+  }
+}
+
+// mixin 사용해보기
+.container {
+  width: 100%;
+  background-color: antiquewhite;
+  .box1 {
+    height: 50px;
+    background-color: $color-orange;
+    &:nth-child(1) {
+      width: 100px;
+    }
+    &:nth-child(2) {
+      width: 120px;
+    }
+    &:nth-child(3) {
+      width: 140px;
+    }
+
+    // from through: 1~3
+    @for $i from 1 through 3 {
+      // #{} : 보간
+      // 문자 사이에 변수를 넣거나, 연산이 아닌 곳에 값을 넣을 때 사용
+      &:nth-child(#{$i}) {
+        // mixin 사용 전
+        // width: (80px + 20px * $i); // 100 120 140
+        // border: 1px soild $color-blue;
+
+        // mixin 사용
+        @include box;
+      }
+    }
+
+    // from to: 1~2
+    // @for $i from 1 to 3 {
+    //     &:nth-child(#{$i}) {
+    //       width: (80px + 20px * $i);
+    //       border: 1px soild $color-blue;
+    //     }
+    //   }
+  }
+  .circle {
+    // 방법 [1] @include circle(red, 0.5);
+    &:nth-child(4) {
+      @include circle(blue, 1);
+    }
+    &:nth-child(5) {
+      @include circle(dodgerblue, 0.8);
+    }
+    &:nth-child(6) {
+      @include circle(#a6a6ff, 0.6);
+      //   @include circle(); //에러 발생
+    }
+
+    // 방법 [2] 배열처럼 변수에 저장 () 소괄호 사용 : 반복문 For each처럼 동작
+    $circleBgColors: (blue, dodgerblue, #a6a6ff);
+    @each $el in $circleBgColors {
+      // index() : SASS에서 기본적으로 제공하는 함수
+      // - index(list, value): 특정 list에서 value의 Index를 반환하는 함수
+      //  - index는 1부터 시작
+      $index: index($circleBgColors, $el);
+      &:nth-child(#{$index + 3}) {
+        // nth-child: $index에 3을 더한 값에 해당하는 요소에 스타일 적용
+        // 예: $index=1 이면 nth-child(4)
+        @include circle($el, 1.2 - 0.2 * $index);
+        // 불투명도 1.2에서 $index(1부터 시작)에 따라 0.2 감소
+        // 예: $index=1이면 1.0, $index=2이면 0.8, $index=3이면 0.6
+      }
+    }
+  }
+  .box2 {
+    @include box2();
+
+    // nth-of-type: 같은 태그 중 몇번째
+    &:nth-of-type(4) {
+      @include box2(yellow, 20px, navy);
+    }
+    &:nth-of-type(5) {
+      @include box2(orangered, 20px, black);
+    }
+  }
+}
+
+// 이미지 불러오기 (public, src/assets 폴더)
+.img-test {
+  width: 100px;
+  height: 100px;
+  border: 1px solid $color-blue;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-reapeat;
+
+  &.src-img {
+    background-image: url('../assets/cat.jpeg');
+  }
+  &.public-img {
+    background-image: url('http://localhost:3000/images/cat.jpeg');
+  }
+}
+
+// 실습문제: 푸 친구들 이미지 불러오기
+.practice {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  @for $i from 1 through 4 {
+    > div:nth-child(#{$i}) {
+      width: 200px;
+      height: 300px;
+      background-color: #a6a6ff;
+      background-image: url('../assets/practice#{$i}.png');
+
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-reapeat;
+
+      border-radius: 10px;
+      box-shadow: $boxShadow;
+    }
+  }
+}

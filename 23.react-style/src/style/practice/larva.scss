@@ -1,0 +1,83 @@
+// 변수 _utils.scss 분리
+$colors: (
+  rgb(0, 0, 166),
+  rgb(36, 61, 206),
+  rgb(52, 118, 231),
+  rgb(47, 146, 233),
+  rgb(140, 191, 253)
+);
+
+.larva {
+  position: relative;
+}
+
+.body {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+
+  // body1 ~ body5
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      background-color: nth($colors, $i);
+    }
+  }
+
+  // 위치
+  &.body1 {
+    z-index: 1;
+    top: 100px;
+    left: 100px;
+  }
+  &.body2 {
+    z-index: 2;
+    top: 150px;
+    left: 160px;
+  }
+  &.body3 {
+    z-index: 3;
+    top: 190px;
+    left: 200px;
+  }
+  &.body4 {
+    z-index: 4;
+    top: 240px;
+    left: 220px;
+  }
+  &.body5 {
+    z-index: 5;
+    top: 280px;
+    left: 280px;
+  }
+
+  // 눈
+  .eye {
+    position: absolute;
+    border-radius: 50%;
+
+    &.eye-white {
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      top: 35%;
+      left: 20%;
+      z-index: 6;
+    }
+
+    &.eye-black {
+      width: 15px;
+      height: 15px;
+      background-color: black;
+      top: 25%;
+      left: 25%;
+    }
+  }
+}
+
+// 잔디
+.grass {
+  position: absolute;
+  top: 260px;
+  left: 0;
+}

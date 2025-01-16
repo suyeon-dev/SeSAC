@@ -1,0 +1,31 @@
+@import '~include-media/dist/include-media'; //라이브러리
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+
+  > div {
+    // flex: grow shrink basis(주축 기준 가로방향)
+    flex-basis: 100px;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  // 이미지 한줄에 3개씩
+  @include media('<768px') {
+    div {
+      flex-basis: 30%;
+    }
+  }
+  // 이미지 한줄에 1개씩
+  @include media('<532px') {
+    div {
+      flex-basis: 100%;
+    }
+  }
+}

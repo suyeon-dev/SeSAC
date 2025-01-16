@@ -1,0 +1,54 @@
+// 색상 변수 style/_util.scss (분리)
+$color-pink: pink;
+$color-yellow: #fde767;
+$color-green: green;
+
+// mixin style/_util.scss (분리)
+@mixin circle($circleColor) {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: $circleColor;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+
+  .circle {
+    $circleColors: ($color-pink, $color-yellow, $color-green);
+
+    @each $el in $circleColors {
+      $idx: index($circleColors, $el);
+      &:nth-child(#{$idx}) {
+        @include circle($el);
+        //  수정 전 animation: circleAni#{$el} 2s infinite;
+        // nth-child와 매칭된 애니메이션 이름 적용
+        animation: circleAni#{$idx} 2s infinite;
+      }
+    }
+  }
+}
+
+@for $i from 1 through 3 {
+  @keyframes circleAni#{$i} {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      //   수정 전: 10px * $i
+      transform: translate(#{10 * $i}px, 0);
+    }
+    50% {
+      transform: translate(#{10 * $i}px, #{10 * $i}px);
+    }
+    75% {
+      transform: translate(0, #{10 * $i}px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+}

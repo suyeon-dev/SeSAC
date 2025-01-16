@@ -1,0 +1,53 @@
+/* 변수, 믹스인 관리하는 부분파일 */
+
+// 변수 선언 $
+$color-red: #d04848;
+$color-orange: #f3b95f;
+$color-yellow: #fde767;
+$color-green: #96ceb4;
+$color-blue: #6895d2;
+
+$boxShadow: 2px 2px 6px rgb(137, 136, 136);
+
+// mixin
+// - 매개변수 없을 때
+@mixin box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+// - 매개변수 없을 때 (인자 전달하지 않으면 에러 발생)
+@mixin circle($circleColor, $circleOpacity) {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: inline-block;
+  background-color: $circleColor;
+  opacity: $circleOpacity;
+}
+
+// default 값 설정
+@mixin box2(
+  $squareBgColor: $color-red,
+  $squareFontSize: 15px,
+  $squareColor: gray
+) {
+  @include box();
+  background-color: $squareBgColor;
+  line-height: 100px;
+  text-align: center;
+  font-size: $squareFontSize;
+  color: $squareColor;
+
+  @if $squareBgColor==$color-red {
+    border-radius: 50%;
+  } @else if $squareColor==black {
+    border-radius: 25%;
+  } @else {
+    border-radius: 0;
+  }
+}
