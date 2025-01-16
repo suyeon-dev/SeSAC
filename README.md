@@ -49,7 +49,7 @@ SeSAC(서울시 청년취업사관학교 x 서울경제진흥원)
 ### React
 
 - 20.react-start: 클래스형(ClassComponent), 함수형(UseJSX), 과제(Practice)
-- 21.props-state:
+- 21.props-state: useState, EventHandling, Map&filter
 - 22.ref-lifecycle: useRef, useEffect
 - 23.react-style: CSS module, Styled-components, SASS
 - 24.react-hooks: useMemo, useCallback, useReducer, useContext
