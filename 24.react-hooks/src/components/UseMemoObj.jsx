@@ -8,16 +8,19 @@ export default function UseMemoObj() {
   //   country: isKorea ? 'korea' : 'abroad',
   // };
 
-  // useMemo
-  // - [] 첫 렌더링 시에만 값 저장, 그 후에는 변경 x
-  // - [location] 바꾸기 위해서는 의존성 배열에 저장
+  // 1. useMemo
+  // location 객체 메모리에 저장 -> isKorea 변경될 때만 함수 실행
+  // - [] 첫 렌더링 시에만 값 저장, 이후에는 재실행되지 않음
+  // - [isKorea] 바꾸기 위해서는 의존성 배열에 저장
   const location = useMemo(() => {
-    // Return 저장하고 싶은 값
+    // Return 저장하고 싶은 값 -> 함수 실행결과로 반환된 객체 저장
     return { country: isKorea ? 'korea' : 'abroad' };
   }, [isKorea]);
 
+  // 2. useEffect: 반환값 없음
+  // useMemo 사용 전에는 Location 변경 없는데도 계속 실행됨
   useEffect(() => {
-    console.log('location이 변경될 때마다 실행됩니다 👻');
+    console.log('location이 변경될 때마다 실ㅍ행됩니다 👻');
   }, [location]);
 
   return (
