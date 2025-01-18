@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// header
+header {
+  background-color: #f6f6df;
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  padding: 10px;
+
+  > h2 {
+    margin-right: 50px;
+  }
+
+  > nav {
+    display: flex;
+    list-style: none;
+  }
+}
+
+// student page
+.container {
+  background-color: #f6f6df;
+  height: 90px;
+  padding: 1rem;
+  font-weight: bold;
+
+  .nickname {
+    color: green;
+  }
+  .realName {
+    color: blue;
+  }
+
+  > p {
+    margin-bottom: 0.5rem;
+  }
+  .indent {
+    margin-left: 1rem;
+  }
+}
