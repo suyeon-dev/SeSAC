@@ -41,7 +41,7 @@ export default function UseReducer() {
       />
       <br />
       {/* dispatch(요청의 주체)의 형식은 통일 */}
-      {/* dispatch(action) : reducer = (prevState, action)=>{} */}
+      {/* dispatch(action) 은 reducer = (prevState, action)=>{} */}
       <button
         onClick={() =>
           dispatch({ type: BANK_ACTION_TYPES.deposit, payload: number })
