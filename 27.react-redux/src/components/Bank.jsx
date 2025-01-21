@@ -4,9 +4,11 @@ import { useState } from 'react';
 
 export default function Bank() {
   const [inputNumber, setInputNumber] = useState(0);
+  // useSelector: 여러 개가 저장되어 있는 store에서 '특정한 state'만 가져오기
   const balance = useSelector((state) => state.bank);
   console.log('잔액', balance);
 
+  // useDispatch: action을 reducer로 전달
   const dispatch = useDispatch();
   return (
     <div>

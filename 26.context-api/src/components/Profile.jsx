@@ -3,11 +3,10 @@ import { AgeContext } from '../context/AgeContext';
 import { UserContext } from '../context/UserContext';
 
 export default function Profile() {
-  const ageContext = useContext(AgeContext); // app.js에서 가져오기
+  const ageContext = useContext(AgeContext);
+  // App.js에서 AgeContext.Provider를 통해 전달된 값 가져옴
+  // Provider로 감싸지 않은 경우에는 createContext의 기본값 반환
 
-  // - Provider로 감싸주지 않았을 때는 컨텍스트 값이
-  // - value로 값을 전달했다면 해당 값이 전달됨 (ageContext)
-  // - createContext 메서드의 인자로 전달한 기본값으로 설정됨 (userContext)
   const userContext = useContext(UserContext);
   console.log('ageContext', ageContext); //{age: 0, setAge: ƒ}
   console.log('userContext', userContext); //{name: '홍길동', setName: ƒ}
