@@ -1,3 +1,4 @@
+/* 문2. interface */
 interface Game {
   title: string;
   price: number;
