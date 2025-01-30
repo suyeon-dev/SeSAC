@@ -3,7 +3,7 @@ interface Props {
   name: string;
 }
 
-// 구조분해할당
+// 구조분해할당 사용하여 props 객체에서 name만 추출
 export function PropsType1({ name }: Props) {
   return (
     <>
@@ -12,11 +12,13 @@ export function PropsType1({ name }: Props) {
   );
 }
 
-// ------
+// ----------------------------
 interface Square {
+  // 모든 key는 string이고, value도 string이어야 함
   [key: string]: string;
 }
 
+// props 객체를 매개변수로 받아, div 스타일을 동적으로 설정하는 컴포넌트
 export function PropsType2(props: Square) {
   const divStyle = {
     width: props.width,
@@ -27,12 +29,15 @@ export function PropsType2(props: Square) {
   return <div style={divStyle}></div>;
 }
 
+// ----------------------------
 interface Square2 {
   width: string;
   height: string;
   color?: string;
   text: string;
 }
+
+// 구조분해 할당을 사용하여 props 객체에서 width, height, color, text 추출
 export function PropsType3(props: Square2) {
   const { width, height, color, text } = props;
   const divStyle = {

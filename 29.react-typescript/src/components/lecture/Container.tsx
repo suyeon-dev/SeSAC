@@ -1,6 +1,5 @@
-import React from 'react';
-
 interface Props {
+  // React 컴포넌트, JSX 요소, 문자열 등 모든 노드를 허용
   children: React.ReactNode; // <div></div>
 }
 
