@@ -10,3 +10,11 @@ export interface PostItemInterface {
   title: string;
   body: string;
 }
+
+// 맛집 실습
+export interface MatzipInterface {
+  idx?: number;
+  imgSrc: string;
+  title: string;
+  desc: string;
+}
