@@ -18,7 +18,7 @@
     </form>
 
     <script>
-      // WebSocket('ws://통신 주소');
+      // ✅ 웹소켓 서버와 연결 ('ws://통신 주소');
       const socket = new WebSocket('ws://localhost:8080');
       console.log(socket);
 
@@ -29,34 +29,44 @@
       - close : 웹 소켓 연결이 종료됐을 때
       */
 
+      const msg = document.querySelector('#msg');
+      const name = document.querySelector('#name');
+      const chatForm = document.querySelector('#chat');
+      const ul = document.querySelector('ul');
+
+      // ✅ WebSocket 이벤트 핸들러
+      // [1] 서버와 연결이 완료됐을 때
       socket.addEventListener('open', (e) => {
         console.log('서버에 연결되었습니다!');
         // console.log('e', e);
         // socket.send('채팅방 입장~!'); // 서버에게 메시지를 보냄
       });
 
+      //  [2] 서버로부터 메시지를 받았을 때
       socket.addEventListener('message', (e) => {
-        console.log('서버로부터 받은 메세지', e.data);
-        const li = document.createElement('li');
+        console.log('서버로부터 받은 메세지', e.data); //// {'msg': 'ddd', 'name': 'ddd'}
         const data = JSON.parse(e.data); // json >> object
         console.log('객체로 변환!', data);
+
+        // 채팅 내용 화면에 추가
+        const li = document.createElement('li');
         li.textContent = `${data.name}: ${data.msg}`;
         ul.append(li);
       });
 
-      const msg = document.querySelector('#msg');
-      const name = document.querySelector('#name');
-      const chatForm = document.querySelector('#chat');
-
-      const ul = document.querySelector('ul');
-
+      // [3] 사용자가 메시지 입력 후 전송 버튼 눌렀을 때
       chatForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        // 사용자가 입력한 데이터 객체 생성
         const chatData = { msg: msg.value, name: name.value };
-        console.log('chatData', chatData);
-        // socket.send(chatData);
-        // 서버에 데이터 보낼 때, string으로 변경해서 보내야함
+        console.log('chatData', chatData); // {msg: 'ddd', name: 'ddd'}
+
+        // ❓ chatData를 JSON으로 바꿔서 보내는 이유
+        // socket.send(chatData); // '클라이언트: 객체 -> 서버: 객체' 로 전달됨
+
+        // 💡서버에 데이터 전송 (string으로 변경해서 보내야함)
+        // 왜냐면 우리가 원하는 형식으로 보내기 위해서! (string -> string)
         socket.send(JSON.stringify(chatData));
 
         msg.value = '';
