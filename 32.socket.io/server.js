@@ -96,7 +96,7 @@ io.on('connection', (socket) => {
     // 2. 서버에서 방열기
     // Join() : 같은 방에 들어있는 사람들끼리 통신할 수 있도록
     socket.join(roomname); // 새로운 방을 열거나, 기존 방에 socket(사용자)를 추가
-    socket.room = roomname; // socket 객체에 room 정보 저장
+    socket.room = roomname; // socket 객체에 room 정보 저장(다른 곳에서도 roomname을 확인할 수 있도록 정보 추가)
 
     // 방이 있을 때,
     console.log('socket.rooms', socket.rooms); //Set(2){'현재 클라이언트 아이디', '방이름'}
